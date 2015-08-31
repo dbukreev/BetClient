@@ -1,0 +1,14 @@
+C:\Users\Denis\Desktop\GitHub\BetClient\EFData\bin\Debug\EFData.dll.config
+C:\Users\Denis\Desktop\GitHub\BetClient\EFData\bin\Debug\EFData.dll
+C:\Users\Denis\Desktop\GitHub\BetClient\EFData\bin\Debug\EFData.pdb
+C:\Users\Denis\Desktop\GitHub\BetClient\EFData\obj\Debug\EFData.dll
+C:\Users\Denis\Desktop\GitHub\BetClient\EFData\obj\Debug\EFData.pdb
+C:\Users\Denis\Desktop\GitHub\BetClient\EFData\bin\Debug\EntityFramework.dll
+C:\Users\Denis\Desktop\GitHub\BetClient\EFData\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Denis\Desktop\GitHub\BetClient\EFData\bin\Debug\EntityFramework.xml
+C:\Users\Denis\Desktop\GitHub\BetClient\EFData\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Denis\Desktop\GitHub\BetClient\EFData\bin\Debug\MySql.Data.dll
+C:\Users\Denis\Desktop\GitHub\BetClient\EFData\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\Denis\Desktop\GitHub\BetClient\EFData\bin\Debug\MySql.Web.dll
+C:\Users\Denis\Desktop\GitHub\BetClient\EFData\obj\Debug\EFData.csprojResolveAssemblyReference.cache
+C:\Users\Denis\Desktop\GitHub\BetClient\EFData\bin\Debug\ru\EntityFramework.resources.dll

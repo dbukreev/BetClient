@@ -1,1 +1,24 @@
 c:\users\denis\documents\visual studio 2013\Projects\BetClient\BetClient\bin\Debug\BetClient.exe.config
+C:\Users\Denis\Desktop\GitHub\BetClient\BetClient\bin\Debug\BetClient.exe.config
+C:\Users\Denis\Desktop\GitHub\BetClient\BetClient\bin\Debug\BetClient.exe
+C:\Users\Denis\Desktop\GitHub\BetClient\BetClient\bin\Debug\BetClient.pdb
+C:\Users\Denis\Desktop\GitHub\BetClient\BetClient\obj\Debug\MainWindow.baml
+C:\Users\Denis\Desktop\GitHub\BetClient\BetClient\obj\Debug\MainWindow.g.cs
+C:\Users\Denis\Desktop\GitHub\BetClient\BetClient\obj\Debug\App.g.cs
+C:\Users\Denis\Desktop\GitHub\BetClient\BetClient\obj\Debug\BetClient_MarkupCompile.cache
+C:\Users\Denis\Desktop\GitHub\BetClient\BetClient\obj\Debug\BetClient.g.resources
+C:\Users\Denis\Desktop\GitHub\BetClient\BetClient\obj\Debug\BetClient.Properties.Resources.resources
+C:\Users\Denis\Desktop\GitHub\BetClient\BetClient\obj\Debug\BetClient.csproj.GenerateResource.Cache
+C:\Users\Denis\Desktop\GitHub\BetClient\BetClient\obj\Debug\BetClient.exe
+C:\Users\Denis\Desktop\GitHub\BetClient\BetClient\obj\Debug\BetClient.pdb
+C:\Users\Denis\Desktop\GitHub\BetClient\BetClient\bin\Debug\EFData.dll
+C:\Users\Denis\Desktop\GitHub\BetClient\BetClient\bin\Debug\EntityFramework.dll
+C:\Users\Denis\Desktop\GitHub\BetClient\BetClient\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Denis\Desktop\GitHub\BetClient\BetClient\bin\Debug\EFData.pdb
+C:\Users\Denis\Desktop\GitHub\BetClient\BetClient\bin\Debug\EntityFramework.xml
+C:\Users\Denis\Desktop\GitHub\BetClient\BetClient\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Denis\Desktop\GitHub\BetClient\BetClient\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\Denis\Desktop\GitHub\BetClient\BetClient\obj\Debug\BetClient.csprojResolveAssemblyReference.cache
+C:\Users\Denis\Desktop\GitHub\BetClient\BetClient\bin\Debug\MySql.Data.dll
+C:\Users\Denis\Desktop\GitHub\BetClient\BetClient\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\Denis\Desktop\GitHub\BetClient\BetClient\bin\Debug\MySql.Web.dll

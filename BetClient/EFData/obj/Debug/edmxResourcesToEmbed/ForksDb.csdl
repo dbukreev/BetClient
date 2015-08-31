@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ForksModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="categories">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="category_id" Type="Int32" Nullable="false" />
+    <Property Name="marathon_id" Type="Int32" />
+    <Property Name="zenit_id" Type="Int32" />
+    <Property Name="baltbet_id" Type="Int32" />
+    <Property Name="xbet_id" Type="Int32" Nullable="false" />
+    <Property Name="xbet_url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updated_at" Type="DateTime" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="category_links">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="site" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="content" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updated_at" Type="DateTime" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="factors">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="site" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="game_id" Type="Int32" Nullable="false" />
+    <Property Name="data" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="category_id" Type="Int32" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" />
+    <Property Name="updated_at" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="factors_old">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="site" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="names" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="category" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="global_category" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="game_id" Type="Int32" Nullable="false" />
+    <Property Name="link" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="type" Type="Int32" Nullable="false" />
+    <Property Name="p1" Type="Single" />
+    <Property Name="p2" Type="Single" />
+    <Property Name="x" Type="Single" />
+    <Property Name="x1" Type="Single" />
+    <Property Name="x12" Type="Single" />
+    <Property Name="x2" Type="Single" />
+    <Property Name="m" Type="Single" />
+    <Property Name="t" Type="Single" />
+    <Property Name="b" Type="Single" />
+    <Property Name="f1" Type="Single" />
+    <Property Name="f2" Type="Single" />
+    <Property Name="k1" Type="Single" />
+    <Property Name="k2" Type="Single" />
+    <Property Name="kf1" Type="Single" />
+    <Property Name="kf2" Type="Single" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" />
+    <Property Name="updated_at" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="forks">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="key" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="category_id" Type="Int32" Nullable="false" />
+    <Property Name="champ" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="game_id_1" Type="Int32" Nullable="false" />
+    <Property Name="game_id_2" Type="Int32" Nullable="false" />
+    <Property Name="name_1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="name_2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="site_1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="site_2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="type_1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="type_2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="k_1" Type="Single" Nullable="false" />
+    <Property Name="k_2" Type="Single" Nullable="false" />
+    <Property Name="plus" Type="Single" Nullable="false" />
+    <Property Name="type_g" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="type_ru" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="updated_at" Type="DateTime" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="game_pages">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="content" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="site" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="category_id" Type="Int32" Nullable="false" />
+    <Property Name="updated_at" Type="DateTime" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="matches">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Decimal" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="category_id" Type="Int32" Nullable="false" />
+    <Property Name="marathon" Type="Int32" />
+    <Property Name="zenit" Type="Int32" />
+    <Property Name="baltbet" Type="Int32" />
+    <Property Name="order_by" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" />
+    <Property Name="updated_at" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="pages">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="site" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="content" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="category_id" Type="Int32" />
+    <Property Name="updated_at" Type="DateTime" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="remember_token" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <Property Name="activation_code" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" />
+    <Property Name="updated_at" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="ForksEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="categories" EntityType="Self.categories" />
+    <EntitySet Name="category_links" EntityType="Self.category_links" />
+    <EntitySet Name="factors" EntityType="Self.factors" />
+    <EntitySet Name="factors_old" EntityType="Self.factors_old" />
+    <EntitySet Name="forks" EntityType="Self.forks" />
+    <EntitySet Name="game_pages" EntityType="Self.game_pages" />
+    <EntitySet Name="matches" EntityType="Self.matches" />
+    <EntitySet Name="pages" EntityType="Self.pages" />
+    <EntitySet Name="users" EntityType="Self.users" />
+  </EntityContainer>
+</Schema>
