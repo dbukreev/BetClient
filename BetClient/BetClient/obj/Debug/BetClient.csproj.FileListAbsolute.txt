@@ -1,0 +1,1 @@
+c:\users\denis\documents\visual studio 2013\Projects\BetClient\BetClient\bin\Debug\BetClient.exe.config
