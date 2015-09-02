@@ -22,3 +22,7 @@ C:\Users\Denis\Desktop\GitHub\BetClient\BetClient\obj\Debug\BetClient.csprojReso
 C:\Users\Denis\Desktop\GitHub\BetClient\BetClient\bin\Debug\MySql.Data.dll
 C:\Users\Denis\Desktop\GitHub\BetClient\BetClient\bin\Debug\MySql.Data.Entity.EF6.dll
 C:\Users\Denis\Desktop\GitHub\BetClient\BetClient\bin\Debug\MySql.Web.dll
+C:\Users\Denis\Desktop\GitHub\BetClient\BetClient\bin\Debug\MahApps.Metro.dll
+C:\Users\Denis\Desktop\GitHub\BetClient\BetClient\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Denis\Desktop\GitHub\BetClient\BetClient\bin\Debug\MahApps.Metro.xml
+C:\Users\Denis\Desktop\GitHub\BetClient\BetClient\obj\Debug\App.baml

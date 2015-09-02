@@ -18,6 +18,9 @@ namespace EFData
         public ForksEntities()
             : base("name=ForksEntities")
         {
+            Configuration.LazyLoadingEnabled = false;
+
+            ((IObjectContextAdapter)this).ObjectContext.CommandTimeout = 0;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

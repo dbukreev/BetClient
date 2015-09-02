@@ -10,5 +10,4 @@ C:\Users\Denis\Desktop\GitHub\BetClient\EFData\bin\Debug\EntityFramework.SqlServ
 C:\Users\Denis\Desktop\GitHub\BetClient\EFData\bin\Debug\MySql.Data.dll
 C:\Users\Denis\Desktop\GitHub\BetClient\EFData\bin\Debug\MySql.Data.Entity.EF6.dll
 C:\Users\Denis\Desktop\GitHub\BetClient\EFData\bin\Debug\MySql.Web.dll
-C:\Users\Denis\Desktop\GitHub\BetClient\EFData\obj\Debug\EFData.csprojResolveAssemblyReference.cache
 C:\Users\Denis\Desktop\GitHub\BetClient\EFData\bin\Debug\ru\EntityFramework.resources.dll

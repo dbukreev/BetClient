@@ -70,7 +70,6 @@
     <Compile Include="category_links.cs">
       <DependentUpon>ForksDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="factors.cs">
       <DependentUpon>ForksDb.tt</DependentUpon>
     </Compile>
