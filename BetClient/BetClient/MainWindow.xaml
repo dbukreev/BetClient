@@ -3,12 +3,65 @@
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
                       Title="BetClient v0.0.0.1"
-                      Height="400"
-                      Width="600"
+                      Height="600"
+                      Width="800"
+                      MinHeight="600"
+                      MinWidth="800"
                       ResizeMode="CanResizeWithGrip"
                       WindowTransitionsEnabled="False"
                       WindowStartupLocation="CenterScreen" 
                       TitleCaps="False"
                       BorderBrush="{DynamicResource AccentColorBrush}"
-                      BorderThickness="1">
+                      BorderThickness="1"
+                      DataContext= "{Binding Main, Source={StaticResource Locator}}">
+    <Grid >
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" Background="#FFDDFBFA">
+            <Menu HorizontalAlignment="Left"  Margin="10,0,0,0" VerticalAlignment="Top" Background="#FFDDFBFA">
+                <MenuItem Header="Файл" Background="#FFDDFBFA" BorderBrush="#FFDDFBFA">
+                    <MenuItem Header="Открыть" />
+                    <Separator/>
+                    <MenuItem Header="Выход"/>
+                </MenuItem>
+                <MenuItem Header="Правка" Background="#FFDDFBFA" BorderBrush="#FFDDFBFA">
+                    <MenuItem Header="Открыть" />
+
+                </MenuItem>
+                <MenuItem Header="Сервис" Background="#FFDDFBFA" BorderBrush="#FFDDFBFA">
+                    <MenuItem Header="Открыть" />
+                </MenuItem>
+                <MenuItem Header="Учёт" Background="#FFDDFBFA" BorderBrush="#FFDDFBFA">
+                    <MenuItem Header="Открыть" />
+                </MenuItem>
+                <MenuItem Header="Браузер" Background="#FFDDFBFA" BorderBrush="#FFDDFBFA">
+                    <MenuItem Header="Открыть" />
+                </MenuItem>
+                <MenuItem Header="Помощь" Background="#FFDDFBFA" BorderBrush="#FFDDFBFA">
+                    <MenuItem Header="Открыть" />
+                </MenuItem>
+            </Menu>
+        </Grid>
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" Background="#FFDDFBFA" Margin="0, 30,0, 0">
+            <ToolBar>
+                <Button Content="Букмекеры" Height="25" VerticalAlignment="Top" Width="75"/>
+                <Button Content="Фильтры" Height="25" VerticalAlignment="Top" Width="75"/>
+                <Button Content="Сделать ставки" Height="25" VerticalAlignment="Top" Width="95"/>
+                <Button Content="Калькулятор" Height="25" VerticalAlignment="Top" Width="75"/>
+                <Button Content="Поиск матчей" Height="25" VerticalAlignment="Top" Width="90"/>
+                <Button Content="Учет" Height="25" VerticalAlignment="Top" Width="75"/>
+                <Button Content="В мои вилки" Height="25" VerticalAlignment="Top" Width="75"/>
+                <Button Content="Вид" Height="25" VerticalAlignment="Top" Width="75"/>
+                <Button Content="Настройки" Height="25" VerticalAlignment="Top" Width="75"/>
+            </ToolBar>
+        </Grid>
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0, 60,0, 0" Height="Auto">
+            <DataGrid VerticalAlignment="Top" HorizontalAlignment="Stretch" ItemsSource="{Binding Path=Forks}">
+                <!--<DataGrid.Columns>
+                    <DataGridTextColumn Header="hi"/>
+                    <DataGridTextColumn Header="hey"/>
+                    <DataGridTextColumn Header="hoy"/>
+                </DataGrid.Columns>-->
+            </DataGrid>
+        </Grid>
+       
+    </Grid>
 </controls:MetroWindow>
