@@ -44,20 +44,29 @@ namespace BetClient.ViewModel
 			//}
 
 			SimpleIoc.Default.Register<IDataService, DataService>();
-            SimpleIoc.Default.Register<MainViewModel>();
-        }
-
-        public MainViewModel Main
+			SimpleIoc.Default.Register<MainViewModel>();
+			SimpleIoc.Default.Register<BrowserViewModel>();
+		}
+		
+		public MainViewModel Main
         {
             get
             {
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
             }
         }
-        
-        public static void Cleanup()
-        {
-            // TODO Clear the ViewModels
-        }
-    }
+
+		public BrowserViewModel Browser
+		{
+			get
+			{
+				return ServiceLocator.Current.GetInstance<BrowserViewModel>();
+			}
+		}
+		
+		public static void Cleanup()
+		{
+			// TODO Clear the ViewModels
+		}
+	}
 }

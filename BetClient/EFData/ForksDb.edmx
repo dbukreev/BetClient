@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище ForksModel" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище ForksDb" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="categories">
           <Key>
             <PropertyRef Name="id" />
@@ -114,7 +114,8 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="ubigint" Nullable="false" />
+          <Property Name="id" Type="ubigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="games_id" Type="bigint" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="category_id" Type="int" Nullable="false" />
           <Property Name="marathon" Type="int" />
@@ -150,7 +151,7 @@
           <Property Name="created_at" Type="datetime" Precision="0" Nullable="false" />
           <Property Name="updated_at" Type="datetime" Precision="0" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="Хранилище ForksModelContainer">
+        <EntityContainer Name="Хранилище ForksDbContainer">
           <EntitySet Name="categories" EntityType="Self.categories" Schema="vilki" store:Type="Tables" />
           <EntitySet Name="category_links" EntityType="Self.category_links" Schema="vilki" store:Type="Tables" />
           <EntitySet Name="factors" EntityType="Self.factors" Schema="vilki" store:Type="Tables" />
@@ -165,7 +166,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ForksModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="ForksDb" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="categories">
           <Key>
             <PropertyRef Name="id" />
@@ -275,7 +276,8 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Decimal" Nullable="false" />
+          <Property Name="id" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="games_id" Type="Int64" Nullable="false" />
           <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="category_id" Type="Int32" Nullable="false" />
           <Property Name="marathon" Type="Int32" />
@@ -327,9 +329,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище ForksModelContainer" CdmEntityContainer="ForksEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ForksDbContainer" CdmEntityContainer="ForksEntities">
           <EntitySetMapping Name="categories">
-            <EntityTypeMapping TypeName="ForksModel.categories">
+            <EntityTypeMapping TypeName="ForksDb.categories">
               <MappingFragment StoreEntitySet="categories">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -345,7 +347,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="category_links">
-            <EntityTypeMapping TypeName="ForksModel.category_links">
+            <EntityTypeMapping TypeName="ForksDb.category_links">
               <MappingFragment StoreEntitySet="category_links">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="site" ColumnName="site" />
@@ -356,7 +358,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="factors">
-            <EntityTypeMapping TypeName="ForksModel.factors">
+            <EntityTypeMapping TypeName="ForksDb.factors">
               <MappingFragment StoreEntitySet="factors">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -370,7 +372,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="factors_old">
-            <EntityTypeMapping TypeName="ForksModel.factors_old">
+            <EntityTypeMapping TypeName="ForksDb.factors_old">
               <MappingFragment StoreEntitySet="factors_old">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="site" ColumnName="site" />
@@ -402,7 +404,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="forks">
-            <EntityTypeMapping TypeName="ForksModel.forks">
+            <EntityTypeMapping TypeName="ForksDb.forks">
               <MappingFragment StoreEntitySet="forks">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="key" ColumnName="key" />
@@ -428,7 +430,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="game_pages">
-            <EntityTypeMapping TypeName="ForksModel.game_pages">
+            <EntityTypeMapping TypeName="ForksDb.game_pages">
               <MappingFragment StoreEntitySet="game_pages">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="content" ColumnName="content" />
@@ -440,9 +442,10 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="matches">
-            <EntityTypeMapping TypeName="ForksModel.matches">
+            <EntityTypeMapping TypeName="ForksDb.matches">
               <MappingFragment StoreEntitySet="matches">
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="games_id" ColumnName="games_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="category_id" ColumnName="category_id" />
                 <ScalarProperty Name="marathon" ColumnName="marathon" />
@@ -455,7 +458,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="pages">
-            <EntityTypeMapping TypeName="ForksModel.pages">
+            <EntityTypeMapping TypeName="ForksDb.pages">
               <MappingFragment StoreEntitySet="pages">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="site" ColumnName="site" />
@@ -467,7 +470,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="users">
-            <EntityTypeMapping TypeName="ForksModel.users">
+            <EntityTypeMapping TypeName="ForksDb.users">
               <MappingFragment StoreEntitySet="users">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="email" ColumnName="email" />

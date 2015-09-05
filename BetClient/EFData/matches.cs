@@ -15,6 +15,7 @@ namespace EFData
     public partial class matches
     {
         public decimal id { get; set; }
+        public long games_id { get; set; }
         public string name { get; set; }
         public int category_id { get; set; }
         public Nullable<int> marathon { get; set; }
