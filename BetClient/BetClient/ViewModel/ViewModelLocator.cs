@@ -46,6 +46,7 @@ namespace BetClient.ViewModel
 			SimpleIoc.Default.Register<IDataService, DataService>();
 			SimpleIoc.Default.Register<MainViewModel>();
 			SimpleIoc.Default.Register<BrowserViewModel>();
+			SimpleIoc.Default.Register<LoginViewModel>();
 		}
 		
 		public MainViewModel Main
@@ -61,6 +62,14 @@ namespace BetClient.ViewModel
 			get
 			{
 				return ServiceLocator.Current.GetInstance<BrowserViewModel>();
+			}
+		}
+
+		public LoginViewModel Login
+		{
+			get
+			{
+				return ServiceLocator.Current.GetInstance<LoginViewModel>();
 			}
 		}
 		

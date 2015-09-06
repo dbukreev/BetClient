@@ -2,13 +2,13 @@
 
 namespace BetClient.Add
 {
-	public static class WindowCloser
+	public static class DialogCloser
 	{
 		public static readonly DependencyProperty DialogResultProperty =
 			DependencyProperty.RegisterAttached(
 				"DialogResult",
 				typeof(bool?),
-				typeof(WindowCloser),
+				typeof(DialogCloser),
 				new PropertyMetadata(DialogResultChanged));
 
 		private static void DialogResultChanged(
