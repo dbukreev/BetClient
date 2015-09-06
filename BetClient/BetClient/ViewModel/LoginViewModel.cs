@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using BetClient.Model;
@@ -13,9 +14,12 @@ namespace BetClient.ViewModel
 		{
 			LoginModel = new LoginModel();
 			LoginCommand = new RelayCommand<object>(OnLoginCommand);
+			Visible = Visibility.Hidden;
 		}
 
 		private bool? _dialogResult;
+
+		private Visibility _visible;
 
 		public bool? DialogResult 
 		{
@@ -27,6 +31,19 @@ namespace BetClient.ViewModel
 			{
 				_dialogResult = value;
 				NotifyPropertyChanged("DialogResult");
+			}
+		}
+
+		public Visibility Visible
+		{
+			get
+			{
+				return _visible;
+			}
+			set
+			{
+				_visible = value;
+				NotifyPropertyChanged("Visible");
 			}
 		}
 
@@ -43,6 +60,10 @@ namespace BetClient.ViewModel
 			{
 				LoginModel.IsLogin = true;
 				DialogResult = true;
+			}
+			else
+			{
+				Visible = Visibility.Visible;
 			}
 			
 		}
