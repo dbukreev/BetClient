@@ -3,7 +3,9 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using BetClient.Add;
 using BetClient.Model;
+using BetClient.Properties;
 using GalaSoft.MvvmLight.CommandWpf;
 
 namespace BetClient.ViewModel
@@ -15,6 +17,10 @@ namespace BetClient.ViewModel
 			LoginModel = new LoginModel();
 			LoginCommand = new RelayCommand<object>(OnLoginCommand);
 			Visible = Visibility.Hidden;
+			if (!string.IsNullOrEmpty(Settings.Default.Login) && !string.IsNullOrEmpty(Settings.Default.Password))
+			{
+				
+			}
 		}
 
 		private bool? _dialogResult;

@@ -106,7 +106,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Add\BookieConverter.cs" />
     <Compile Include="Add\DialogCloser.cs" />
+    <Compile Include="Add\PasswordAssistent.cs" />
     <Compile Include="Model\LoginModel.cs" />
     <Compile Include="Model\MainModel.cs" />
     <Compile Include="Service\DataService.cs" />
@@ -183,9 +185,6 @@
     <Resource Include="View\Image\save.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="View\Image\dollar.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="View\Image\exit.png" />
   </ItemGroup>
   <ItemGroup>
@@ -193,6 +192,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="application.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Image\money.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Image\main.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

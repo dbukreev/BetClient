@@ -2,7 +2,8 @@
                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
-                      Title="BetClient v0.0.0.1"
+                      xmlns:add="clr-namespace:BetClient.Add"
+                      Title="BetInLive v0.0.0.2"
                       Height="600"
                       Width="900"
                       MinHeight="600"
@@ -12,7 +13,7 @@
                       WindowStartupLocation="CenterScreen" 
                       TitleCaps="False"
                       BorderThickness="1"
-                      DataContext= "{Binding Main, Source={StaticResource Locator}}" Icon="View/Image/dollar.png" TitlebarHeight="25">
+                      DataContext= "{Binding Main, Source={StaticResource Locator}}" Icon="View/Image/main.png" TitlebarHeight="25">
     <controls:MetroWindow.BorderBrush>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="Black" Offset="0"/>
@@ -26,38 +27,37 @@
             <GradientStop Color="#FF3A3939" Offset="0.477"/>
         </LinearGradientBrush>
     </controls:MetroWindow.WindowTitleBrush>
-    
-    <Grid >
-        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="27" Background="#FF646464">
+    <controls:MetroWindow.IconTemplate>
+        <DataTemplate>
+            <Grid Width="{TemplateBinding Width}"
+                 Height="{TemplateBinding Height}"
+                 Margin="4"
+                 Background="Transparent"
+                 RenderOptions.EdgeMode="Aliased"
+                 RenderOptions.BitmapScalingMode="HighQuality">
+                <Image Source="View/Image/main.png"></Image>
+            </Grid>
+        </DataTemplate>
+    </controls:MetroWindow.IconTemplate>
+    <Window.Resources>
+        <add:BookieConverter x:Key="Converter" />
+    </Window.Resources>
+    <Grid  Name="CommonGrid">
+        <Grid Name="MenuGrid" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="27" Background="#FF646464">
             <Menu HorizontalAlignment="Left"  Margin="10,0,0,0" VerticalAlignment="Top" Background="#FF646464"  BorderBrush="#FF646464" Foreground="White" FontSize="12">
                 <MenuItem Header="Файл" Background="#FF646464" BorderBrush="#FF646464">
-                    <MenuItem Header="Сохранить вилку в файл" Foreground="Black">
-                    </MenuItem>
-                    <Separator/>
-                    <MenuItem Header="Выход"  Command="{Binding ExitCommand}"  Foreground="Black">
-                        <MenuItem.Icon>
-                            <Image Source="View/Image/exit.png"/>
-                        </MenuItem.Icon>
-                        </MenuItem>
-                    </MenuItem>
-                <MenuItem Header="Правка" Background="#FF646464" BorderBrush="#FF646464">
-                    <MenuItem Header="Открыть"  Foreground="Black"/>
-                </MenuItem>
-                <MenuItem Header="Сервис" Background="#FF646464" BorderBrush="#FF646464" >
-                    <MenuItem Header="Открыть"  Foreground="Black"/>
-                </MenuItem>
-                <MenuItem Header="Учёт" Background="#FF646464" BorderBrush="#FF646464">
-                    <MenuItem Header="Открыть" Foreground="Black"/>
+
+                    <MenuItem Header="Выход"  Command="{Binding ExitCommand}"  Foreground="Black"/>
                 </MenuItem>
                 <MenuItem Header="Браузер" Background="#FF646464"  BorderBrush="#FF646464">
                     <MenuItem Header="Сделать ставки" Foreground="Black" Command="{Binding OpenBrowserCommand}"/>
                 </MenuItem>
                 <MenuItem Header="Помощь" Background="#FF646464" BorderBrush="#FF646464">
-                    <MenuItem Header="Открыть" Foreground="Black"/>
+                    <MenuItem Header="О программе" Foreground="Black"/>
                 </MenuItem>
             </Menu>
         </Grid>
-        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" Margin="0, 30,0, 0">
+        <Grid Name="ToolBarGrid" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" Margin="0, 30,0, 0">
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                     <GradientStop Color="#FFBDC1C3" Offset="1"/>
@@ -65,27 +65,28 @@
                 </LinearGradientBrush>
             </Grid.Background>
             <ToolBar>
-                <Button Content="Букмекеры" Height="25" VerticalAlignment="Top" Width="75"/>
-                <Button Content="Фильтры" Height="25" VerticalAlignment="Top" Width="75"/>
                 <Button Content="Сделать ставки" Height="25" VerticalAlignment="Top" Width="95" Command="{Binding OpenBrowserCommand}"/>
                 <Button Content="Калькулятор" Height="25" VerticalAlignment="Top" Width="75"/>
-                <Button Content="Поиск матчей" Height="25" VerticalAlignment="Top" Width="90"/>
-                <Button Content="Учет" Height="25" VerticalAlignment="Top" Width="75"/>
-                <Button Content="В мои вилки" Height="25" VerticalAlignment="Top" Width="75"/>
-                <Button Content="Вид" Height="25" VerticalAlignment="Top" Width="75"/>
                 <Button Content="Настройки" Height="25" VerticalAlignment="Top" Width="75"/>
                 <Button Content="Обновить" Height="25" VerticalAlignment="Top" Width="75" Command="{Binding UpdateCommand}"/>
             </ToolBar>
         </Grid>
-        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0, 60,0, 0" Height="Auto" >
-            <DataGrid VerticalAlignment="Top" HorizontalAlignment="Stretch" ItemsSource="{Binding Path=MainModel.Forks, Mode=TwoWay}" AutoGenerateColumns="False"  >
+        <Grid Name="DataGridGrid" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0, 60,0, 0" Height="Auto" >
+            <DataGrid VerticalAlignment="Top" HorizontalAlignment="Stretch" ItemsSource="{Binding Path=MainModel.Forks, Mode=TwoWay}" AutoGenerateColumns="False" IsReadOnly="True" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserAddRows="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Чемпионат" Binding="{Binding champ}" Width="*" MinWidth="130"/>
-                    <DataGridTextColumn Header="Событие" Binding="{Binding name_1}" Width="*" MinWidth="180"/>
-                    <DataGridTextColumn Header="Букмекеры" Binding="{Binding site_1}" Width="*" MinWidth="150"/>
-                    <DataGridTextColumn Header="Коэффициент 1" Binding="{Binding k_1}" Width="*"  MinWidth="120"/>
-                    <DataGridTextColumn Header="Коэффициент 2" Binding="{Binding k_2}" Width="*" MinWidth="125"/>
-                    <DataGridTextColumn Header="Прибыль" Binding="{Binding plus}" Width="*" MinWidth="100"/>
+                    <DataGridTextColumn Header="До начала" Binding="{Binding time}" Width="*" MinWidth="100" MaxWidth="100"/>
+                    <DataGridTextColumn Header="Чемпионат" Binding="{Binding champ}" Width="*" MinWidth="100"/>
+                    <DataGridTextColumn Header="Событие" Binding="{Binding name_1}" Width="*" MinWidth="200"/>
+                    <DataGridTextColumn Header="Букмекеры" Width="*" MinWidth="150" >
+                        <DataGridTextColumn.Binding>
+                            <MultiBinding Converter="{StaticResource Converter}">
+                                <Binding Path="site_1" />
+                                <Binding Path="site_2" />
+                            </MultiBinding>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Тип" Binding="{Binding type_ru}" Width="*" MinWidth="90"/>
+                    <DataGridTextColumn Header="Прибыль" Binding="{Binding plus}" Width="*" MinWidth="90"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

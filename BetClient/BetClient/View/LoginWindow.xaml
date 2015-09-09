@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:add="clr-namespace:BetClient.Add"
-        Title="BetClient - вход" Height="180" Width="300"  ResizeMode="NoResize" TitleCaps="False" BorderThickness="1"
-        DataContext= "{Binding Login, Source={StaticResource Locator}}" Icon="Image/dollar.png"
+        Title="BetInLive - вход" Height="210" Width="265"  ResizeMode="NoResize" Icon="Image/main.png" TitleCaps="False" BorderThickness="1" 
+        DataContext= "{Binding Login, Source={StaticResource Locator}}"
                       add:DialogCloser.DialogResult="{Binding DialogResult}">
     <controls:MetroWindow.BorderBrush>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -19,13 +19,30 @@
             <GradientStop Color="#FF3A3939" Offset="0.477"/>
         </LinearGradientBrush>
     </controls:MetroWindow.WindowTitleBrush>
+    <controls:MetroWindow.IconTemplate>
+        <DataTemplate>
+            <Grid Width="{TemplateBinding Width}"
+                 Height="{TemplateBinding Height}"
+                 Margin="6"
+                 Background="Transparent"
+                 RenderOptions.EdgeMode="Aliased"
+                 RenderOptions.BitmapScalingMode="HighQuality">
+                <Image Source="Image/main.png"></Image>
+            </Grid>
+        </DataTemplate>
+    </controls:MetroWindow.IconTemplate>
     <Grid Background="#FFEAE8E8">
-        <Label Content="Логин:" HorizontalAlignment="Left" Margin="12,21,0,0" VerticalAlignment="Top"/>
-        <Label Content="Пароль:" HorizontalAlignment="Left" Margin="12,52,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="80,21,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="189" Text="{Binding LoginModel.Login}" />
-        <PasswordBox Name="PasswordBox" HorizontalAlignment="Left" Height="23" Margin="80,53,0,0"  VerticalAlignment="Top" Width="189" />
-        <Button Content="Войти" HorizontalAlignment="Left" Margin="80,107,0,0" VerticalAlignment="Top" Width="90" Height="20" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=PasswordBox}"/>
-        <Button Content="Регистрация" HorizontalAlignment="Left" Margin="179,107,0,0" VerticalAlignment="Top" Width="90" Height="20"/>
-        <Label Content="Incorrect username/password" HorizontalAlignment="Left" Margin="80,79,0,0" VerticalAlignment="Top" FontSize="10" Foreground="Red" Visibility="{Binding Visible}"/>
+        <Label Content="Логин:" HorizontalAlignment="Left" Margin="15,27,0,0" VerticalAlignment="Top" FontFamily="SegoeUI" FontSize="11"/>
+        <Label Content="Пароль:" HorizontalAlignment="Left" Margin="15,67,0,0" VerticalAlignment="Top" FontFamily="SegoeUI" FontSize="11"/>
+        <TextBox HorizontalAlignment="Right" Height="20" Margin="0,25,20,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="160" Text="{Binding LoginModel.Login}" FontSize="11" MaxLength="20"/>
+        <PasswordBox Name="PasswordBox" HorizontalAlignment="Right" Height="20" Margin="0,65,20,0"  VerticalAlignment="Top" Width="160" FontSize="11" add:PasswordBoxAssistant.BindPassword="true"  add:PasswordBoxAssistant.BoundPassword="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MaxLength="20"/>
+        <Button Content="Войти" HorizontalAlignment="Right" Margin="0,0,138,20" VerticalAlignment="Bottom" Width="95" Height="22" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=PasswordBox}" />
+        <Button Content="Регистрация" HorizontalAlignment="Right" Margin="0,0,33,20" VerticalAlignment="Bottom" Width="95" Height="22"/>
+        <Label Content="Вход не выполнен" HorizontalAlignment="Left" Margin="81,2,0,0" VerticalAlignment="Top" FontSize="9" Foreground="Red"  Visibility="{Binding Visible}"/>
+        <CheckBox Content="Запомнить меня" HorizontalAlignment="Right" Margin="0,99,88,0" VerticalAlignment="Top" FontSize="11">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="0.87" ScaleY="0.87" />
+            </CheckBox.LayoutTransform>
+        </CheckBox>
     </Grid>
 </controls:MetroWindow>
