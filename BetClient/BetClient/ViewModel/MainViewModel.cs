@@ -1,8 +1,14 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Windows;
 using System.Windows.Input;
 using BetClient.Model;
 using BetClient.Service;
 using BetClient.View;
+using EFData;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 
@@ -31,14 +37,16 @@ namespace BetClient.ViewModel
 			ExitCommand = new RelayCommand(OnExitCommand);
 			OpenBrowserCommand = new RelayCommand(OnOpenBrowserCommand);
 			UpdateCommand = new RelayCommand(OnUpdateCommand);
+			SelectionChangedCommand = new RelayCommand<IList>(OnSelectionChanged);
 		}
-		
+
+	
 		public MainModel MainModel { get; set; }
 
 		public ICommand ExitCommand { get; set; }
 		public ICommand OpenBrowserCommand { get; set; }
-
 		public ICommand UpdateCommand { get; set; }
+		public ICommand SelectionChangedCommand { get; set; }
 
 		private void OnExitCommand()
 		{
@@ -46,7 +54,16 @@ namespace BetClient.ViewModel
 		}
 		private void OnOpenBrowserCommand()
 		{
-			var browserWindow = new BrowserWindow();
+			if (MainModel.SelectedFork == null)
+			{
+				MessageBox.Show("Не выбрана вилка.");
+				return;
+			}
+
+			var browserWindow = new BrowserWindow
+			{
+				DataContext = new BrowserViewModel(MainModel.SelectedFork)
+			};
 			browserWindow.ShowDialog();
 		}
 
@@ -54,5 +71,12 @@ namespace BetClient.ViewModel
 		{
 			MainModel.GetForks();
 		}
+
+		private void OnSelectionChanged(IList selectedFork )
+		{
+			if (selectedFork.Count != 0)
+				MainModel.SelectedFork = selectedFork.Cast<forks>().First();
+		}
+
 	}
 }

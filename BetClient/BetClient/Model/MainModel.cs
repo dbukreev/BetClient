@@ -1,10 +1,11 @@
 ﻿using System.Collections.ObjectModel;
+using BetClient.Add;
 using BetClient.Service;
 using EFData;
 
 namespace BetClient.Model
 {
-	public class MainModel
+	public class MainModel:NotifyPropertyChanged
 	{
 		public MainModel(IDataService dataService)
 		{
@@ -13,7 +14,28 @@ namespace BetClient.Model
 		}
 
 		private readonly IDataService _dataService;
-		public ObservableCollection<forks> Forks { get; set; }
+		private ObservableCollection<forks> _forks;
+		private forks _selectedFork;
+
+		public ObservableCollection<forks> Forks
+		{
+			get { return _forks; }
+			set
+			{
+				_forks = value;
+				OnPropertyChanged("Forks");
+			}
+		}
+
+		public forks SelectedFork
+		{
+			get { return _selectedFork; }
+			set
+			{
+				_selectedFork = value;
+				OnPropertyChanged("SelectedFork");
+			}
+		}
 
 		public void GetForks()
 		{

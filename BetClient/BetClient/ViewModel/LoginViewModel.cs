@@ -10,7 +10,7 @@ using GalaSoft.MvvmLight.CommandWpf;
 
 namespace BetClient.ViewModel
 {
-	public class LoginViewModel:INotifyPropertyChanged
+	public class LoginViewModel : NotifyPropertyChanged
 	{
 		public LoginViewModel()
 		{
@@ -32,7 +32,7 @@ namespace BetClient.ViewModel
 			set
 			{
 				_dialogResult = value;
-				NotifyPropertyChanged("DialogResult");
+				OnPropertyChanged("DialogResult");
 			}
 		}
 
@@ -45,7 +45,7 @@ namespace BetClient.ViewModel
 			set
 			{
 				_visible = value;
-				NotifyPropertyChanged("Visible");
+				OnPropertyChanged("Visible");
 			}
 		}
 
@@ -94,16 +94,6 @@ namespace BetClient.ViewModel
 				Visible = Visibility.Visible;
 			}
 			
-		}
-
-		public event PropertyChangedEventHandler PropertyChanged;
-
-		protected void NotifyPropertyChanged(String info)
-		{
-			if (PropertyChanged != null)
-			{
-				PropertyChanged(this, new PropertyChangedEventArgs(info));
-			}
 		}
 	}
 }

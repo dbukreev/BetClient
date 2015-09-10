@@ -109,7 +109,10 @@
     <Compile Include="Add\BookieConverter.cs" />
     <Compile Include="Add\DialogCloser.cs" />
     <Compile Include="Add\LoginParametersConverter.cs" />
+    <Compile Include="Add\NotifyPropertyChanged.cs" />
     <Compile Include="Add\PasswordAssistent.cs" />
+    <Compile Include="Add\WebBrowserUtility.cs" />
+    <Compile Include="Model\BrowserModel.cs" />
     <Compile Include="Model\LoginModel.cs" />
     <Compile Include="Model\MainModel.cs" />
     <Compile Include="Service\DataService.cs" />

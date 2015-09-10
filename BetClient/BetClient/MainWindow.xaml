@@ -3,6 +3,7 @@
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
                       xmlns:add="clr-namespace:BetClient.Add"
+                      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
                       Title="BetInLive v0.0.0.2"
                       Height="600"
                       Width="900"
@@ -72,9 +73,19 @@
             </ToolBar>
         </Grid>
         <Grid Name="DataGridGrid" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0, 60,0, 0" Height="Auto" >
-            <DataGrid VerticalAlignment="Top" HorizontalAlignment="Stretch" ItemsSource="{Binding Path=MainModel.Forks, Mode=TwoWay}" AutoGenerateColumns="False" IsReadOnly="True" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserAddRows="False">
+            <DataGrid Name="DataGrid" VerticalAlignment="Top" HorizontalAlignment="Stretch" ItemsSource="{Binding Path=MainModel.Forks, Mode=TwoWay}"  AutoGenerateColumns="False" IsReadOnly="True" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserAddRows="False">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding SelectionChangedCommand}" CommandParameter="{Binding Path=SelectedItems, ElementName=DataGrid}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+
+                <DataGrid.InputBindings>
+                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding OpenBrowserCommand}"/>
+                </DataGrid.InputBindings>
+
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="До начала" Binding="{Binding time}" Width="*" MinWidth="100" MaxWidth="100"/>
+                    <DataGridTextColumn Header="Время" Binding="{Binding time}" Width="*" MinWidth="100" MaxWidth="100"/>
                     <DataGridTextColumn Header="Чемпионат" Binding="{Binding champ}" Width="*" MinWidth="100"/>
                     <DataGridTextColumn Header="Событие" Binding="{Binding name_1}" Width="*" MinWidth="200"/>
                     <DataGridTextColumn Header="Букмекеры" Width="*" MinWidth="150" >
