@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BetClient.Properties;
 
 namespace BetClient.View
 {
@@ -22,6 +23,13 @@ namespace BetClient.View
 		public LoginWindow()
 		{
 			InitializeComponent();
+			
+			if (Settings.Default.IsRemember)
+			{
+				LoginTextBox.Text = Settings.Default.Login;
+				PasswordBox.Password = Settings.Default.Password;
+				RememberCheckBox.IsChecked = true;
+			}
 		}
 	}
 }

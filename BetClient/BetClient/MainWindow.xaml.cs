@@ -11,10 +11,10 @@ namespace BetClient
 	{
 		public MainWindow()
 		{
-			//var loginWindow = new LoginWindow();
-			//loginWindow.ShowDialog();
-			//if (LoginModel.IsLogin == false)
-			//	Environment.Exit(0);
+			var loginWindow = new LoginWindow();
+			loginWindow.ShowDialog();
+			if (LoginModel.IsLogin == false)
+				Environment.Exit(0);
 			InitializeComponent();
 		}
 	}

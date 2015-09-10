@@ -31,15 +31,26 @@
             </Grid>
         </DataTemplate>
     </controls:MetroWindow.IconTemplate>
+    <Window.Resources>
+        <add:LoginParametersConverter x:Key="Converter" />
+    </Window.Resources>
     <Grid Background="#FFEAE8E8">
         <Label Content="Логин:" HorizontalAlignment="Left" Margin="15,27,0,0" VerticalAlignment="Top" FontFamily="SegoeUI" FontSize="11"/>
         <Label Content="Пароль:" HorizontalAlignment="Left" Margin="15,67,0,0" VerticalAlignment="Top" FontFamily="SegoeUI" FontSize="11"/>
-        <TextBox HorizontalAlignment="Right" Height="20" Margin="0,25,20,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="160" Text="{Binding LoginModel.Login}" FontSize="11" MaxLength="20"/>
-        <PasswordBox Name="PasswordBox" HorizontalAlignment="Right" Height="20" Margin="0,65,20,0"  VerticalAlignment="Top" Width="160" FontSize="11" add:PasswordBoxAssistant.BindPassword="true"  add:PasswordBoxAssistant.BoundPassword="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" MaxLength="20"/>
-        <Button Content="Войти" HorizontalAlignment="Right" Margin="0,0,138,20" VerticalAlignment="Bottom" Width="95" Height="22" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=PasswordBox}" />
+        <TextBox Name="LoginTextBox" HorizontalAlignment="Right" Height="20" Margin="0,25,20,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="160" FontSize="11" MaxLength="20"/>
+        <PasswordBox Name="PasswordBox" HorizontalAlignment="Right" Height="20" Margin="0,65,20,0"  VerticalAlignment="Top" Width="160" FontSize="11" MaxLength="20"/>
+        <Button Content="Войти" HorizontalAlignment="Right" Margin="0,0,138,20" VerticalAlignment="Bottom" Width="95" Height="22" Command="{Binding LoginCommand}">
+            <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource Converter}">
+                    <Binding  ElementName="LoginTextBox"/>
+                    <Binding  ElementName="PasswordBox"/>
+                    <Binding  ElementName="RememberCheckBox"/>
+                </MultiBinding>
+            </Button.CommandParameter>
+        </Button>
         <Button Content="Регистрация" HorizontalAlignment="Right" Margin="0,0,33,20" VerticalAlignment="Bottom" Width="95" Height="22"/>
         <Label Content="Вход не выполнен" HorizontalAlignment="Left" Margin="81,2,0,0" VerticalAlignment="Top" FontSize="9" Foreground="Red"  Visibility="{Binding Visible}"/>
-        <CheckBox Content="Запомнить меня" HorizontalAlignment="Right" Margin="0,99,88,0" VerticalAlignment="Top" FontSize="11">
+        <CheckBox Name="RememberCheckBox" Content="Запомнить меня" HorizontalAlignment="Right" Margin="0,99,88,0" VerticalAlignment="Top" FontSize="11">
             <CheckBox.LayoutTransform>
                 <ScaleTransform ScaleX="0.87" ScaleY="0.87" />
             </CheckBox.LayoutTransform>

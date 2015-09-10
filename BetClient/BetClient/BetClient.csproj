@@ -108,6 +108,7 @@
     </ApplicationDefinition>
     <Compile Include="Add\BookieConverter.cs" />
     <Compile Include="Add\DialogCloser.cs" />
+    <Compile Include="Add\LoginParametersConverter.cs" />
     <Compile Include="Add\PasswordAssistent.cs" />
     <Compile Include="Model\LoginModel.cs" />
     <Compile Include="Model\MainModel.cs" />
