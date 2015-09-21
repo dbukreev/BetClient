@@ -54,7 +54,7 @@
                     <MenuItem Header="Сделать ставки" Foreground="Black" Command="{Binding OpenBrowserCommand}"/>
                 </MenuItem>
                 <MenuItem Header="Помощь" Background="#FF646464" BorderBrush="#FF646464">
-                    <MenuItem Header="О программе" Foreground="Black"/>
+                    <MenuItem Header="О программе" Foreground="Black" Command="{Binding AboutCommand}"/>
                 </MenuItem>
             </Menu>
         </Grid>

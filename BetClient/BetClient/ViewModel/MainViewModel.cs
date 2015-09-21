@@ -38,12 +38,14 @@ namespace BetClient.ViewModel
 			OpenBrowserCommand = new RelayCommand(OnOpenBrowserCommand);
 			UpdateCommand = new RelayCommand(OnUpdateCommand);
 			SelectionChangedCommand = new RelayCommand<IList>(OnSelectionChanged);
+			AboutCommand = new RelayCommand(OnAboutCommand);
 		}
 
 	
 		public MainModel MainModel { get; set; }
 
 		public ICommand ExitCommand { get; set; }
+		public ICommand AboutCommand { get; set; }
 		public ICommand OpenBrowserCommand { get; set; }
 		public ICommand UpdateCommand { get; set; }
 		public ICommand SelectionChangedCommand { get; set; }
@@ -76,6 +78,12 @@ namespace BetClient.ViewModel
 		{
 			if (selectedFork.Count != 0)
 				MainModel.SelectedFork = selectedFork.Cast<forks>().First();
+		}
+
+		private void OnAboutCommand()
+		{
+			var aboutWindow = new AboutWindow();
+			aboutWindow.ShowDialog();
 		}
 
 	}

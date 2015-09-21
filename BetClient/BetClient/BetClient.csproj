@@ -119,11 +119,15 @@
     <Compile Include="Service\Extensions\IEnumerableExtension.cs" />
     <Compile Include="Service\IDataService.cs" />
     <Compile Include="ViewModel\BrowserViewModel.cs" />
+    <Compile Include="ViewModel\AboutViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\BrowserWindow.xaml.cs">
       <DependentUpon>BrowserWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AboutWindow.xaml.cs">
+      <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
@@ -143,6 +147,10 @@
     <Page Include="View\BrowserWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AboutWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\LoginWindow.xaml">
       <SubType>Designer</SubType>
@@ -202,6 +210,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="View\Image\main.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Image\main_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Image\about.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

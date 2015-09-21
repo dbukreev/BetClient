@@ -39,7 +39,7 @@ namespace BetClient.Model
 
 		public void GetForks()
 		{
-			Forks = _dataService.GetForks();
+			//Forks = _dataService.GetForks();
 		}
 	}
 }
