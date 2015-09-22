@@ -107,7 +107,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Add\BookieConverter.cs" />
-    <Compile Include="Add\DialogCloser.cs" />
     <Compile Include="Add\LoginParametersConverter.cs" />
     <Compile Include="Add\NotifyPropertyChanged.cs" />
     <Compile Include="Add\PasswordAssistent.cs" />

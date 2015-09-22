@@ -5,7 +5,6 @@
         xmlns:add="clr-namespace:BetClient.Add"
         Title="О программе BetInLive" Height="200" Width="310"  ResizeMode="NoResize" Icon="Image/about.png" TitleCaps="False" BorderThickness="1" 
         DataContext= "{Binding About, Source={StaticResource Locator}}"
-                      add:DialogCloser.DialogResult="{Binding DialogResult}"
                       WindowStartupLocation="CenterScreen">
     <controls:MetroWindow.BorderBrush>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BetClient.Properties;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace BetClient.View
 {
@@ -23,6 +24,14 @@ namespace BetClient.View
 		public AboutWindow()
 		{
 			InitializeComponent();
+			Messenger.Default.Register<NotificationMessage>(this, (nm) =>
+			{
+				if (nm.Notification == "CloseAboutWindow")
+				{
+					if (nm.Sender == this.DataContext)
+						this.Close();
+				}
+			});
 		}
 	}
 }

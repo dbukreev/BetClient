@@ -2,6 +2,7 @@
 using BetClient.Add;
 using BetClient.Model;
 using GalaSoft.MvvmLight.CommandWpf;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace BetClient.ViewModel
 {
@@ -30,7 +31,12 @@ namespace BetClient.ViewModel
 
 		public void OnOkCommand()
 		{
-			DialogResult = true;
+			CloseWindow();
+		}
+
+		public void CloseWindow()
+		{
+			Messenger.Default.Send(new NotificationMessage(this, "CloseAboutWindow"));
 		}
 	}
 }

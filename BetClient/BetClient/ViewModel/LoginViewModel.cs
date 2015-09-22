@@ -7,6 +7,7 @@ using BetClient.Add;
 using BetClient.Model;
 using BetClient.Properties;
 using GalaSoft.MvvmLight.CommandWpf;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace BetClient.ViewModel
 {
@@ -19,22 +20,7 @@ namespace BetClient.ViewModel
 			Visible = Visibility.Hidden;
 		}
 
-		private bool? _dialogResult;
-
 		private Visibility _visible;
-
-		public bool? DialogResult 
-		{
-			get
-			{
-				return _dialogResult;
-			}
-			set
-			{
-				_dialogResult = value;
-				OnPropertyChanged("DialogResult");
-			}
-		}
 
 		public Visibility Visible
 		{
@@ -87,13 +73,18 @@ namespace BetClient.ViewModel
 				}
 
 				LoginModel.IsLogin = true;
-				DialogResult = true;
+				CloseWindow();
 			}
 			else
 			{
 				Visible = Visibility.Visible;
 			}
 			
+		}
+
+		public void CloseWindow()
+		{
+			Messenger.Default.Send(new NotificationMessage(this, "CloseLoginWindow"));
 		}
 	}
 }

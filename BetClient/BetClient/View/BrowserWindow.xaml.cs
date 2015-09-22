@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace BetClient.View
 {
@@ -21,7 +22,7 @@ namespace BetClient.View
 	{
 		public BrowserWindow()
 		{
-			InitializeComponent();
+			InitializeComponent(); 
 		}
 	}
 }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BetClient.Properties;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace BetClient.View
 {
@@ -23,7 +24,15 @@ namespace BetClient.View
 		public LoginWindow()
 		{
 			InitializeComponent();
-			
+			Messenger.Default.Register<NotificationMessage>(this, (nm) =>
+			{
+				if (nm.Notification == "CloseLoginWindow")
+				{
+					if (nm.Sender == this.DataContext)
+						this.Close();
+				}
+			});
+
 			if (Settings.Default.IsRemember)
 			{
 				LoginTextBox.Text = Settings.Default.Login;
