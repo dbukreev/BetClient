@@ -55,10 +55,5 @@ namespace BetClient.ViewModel
 				return ServiceLocator.Current.GetInstance<AboutViewModel>();
 			}
 		}
-		
-		public static void Cleanup()
-		{
-			// TODO Clear the ViewModels
-		}
 	}
 }
