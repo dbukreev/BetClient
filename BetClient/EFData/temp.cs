@@ -12,12 +12,10 @@ namespace EFData
     using System;
     using System.Collections.Generic;
     
-    public partial class game_pages
+    public partial class temp
     {
         public int id { get; set; }
         public string content { get; set; }
-        public string site { get; set; }
-        public int category_id { get; set; }
         public System.DateTime updated_at { get; set; }
         public System.DateTime created_at { get; set; }
     }

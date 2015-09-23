@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Threading;
 using BetClient.Add;
 using BetClient.Service;
 using EFData;
@@ -16,6 +18,7 @@ namespace BetClient.Model
 		private readonly IDataService _dataService;
 		private ObservableCollection<forks> _forks;
 		private forks _selectedFork;
+		private DateTime _currentTime;
 
 		public ObservableCollection<forks> Forks
 		{
@@ -24,6 +27,20 @@ namespace BetClient.Model
 			{
 				_forks = value;
 				OnPropertyChanged("Forks");
+			}
+		}
+
+		public DateTime CurrentTime
+		{
+			get
+			{
+				return _currentTime;
+				
+			}
+			set
+			{
+				_currentTime = value;
+				OnPropertyChanged("CurrentTime");
 			}
 		}
 
@@ -39,7 +56,18 @@ namespace BetClient.Model
 
 		public void GetForks()
 		{
-			//Forks = _dataService.GetForks();
+			Action act = GetForksAsync;
+			act.BeginInvoke(null, null);
+		}
+
+		public void GetForksAsync()
+		{
+			while (true)
+			{
+				Forks = _dataService.GetForks();
+				CurrentTime = DateTime.Now;
+				Thread.Sleep(3000);
+			}
 		}
 	}
 }

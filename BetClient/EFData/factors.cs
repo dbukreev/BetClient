@@ -17,7 +17,7 @@ namespace EFData
         public int id { get; set; }
         public string name { get; set; }
         public string site { get; set; }
-        public int game_id { get; set; }
+        public int game { get; set; }
         public string data { get; set; }
         public Nullable<int> category_id { get; set; }
         public System.DateTime created_at { get; set; }

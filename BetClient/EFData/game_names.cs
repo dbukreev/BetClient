@@ -12,11 +12,14 @@ namespace EFData
     using System;
     using System.Collections.Generic;
     
-    public partial class category_links
+    public partial class game_names
     {
         public int id { get; set; }
+        public Nullable<int> category_id { get; set; }
         public string site { get; set; }
-        public string content { get; set; }
+        public string game { get; set; }
+        public string name { get; set; }
+        public bool status { get; set; }
         public System.DateTime updated_at { get; set; }
         public System.DateTime created_at { get; set; }
     }

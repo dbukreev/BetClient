@@ -14,7 +14,7 @@
                       WindowStartupLocation="CenterScreen" 
                       TitleCaps="False"
                       BorderThickness="1"
-                      DataContext= "{Binding Main, Source={StaticResource Locator}}" Icon="View/Image/main.png" TitlebarHeight="25">
+                       DataContext= "{Binding Main, Source={StaticResource Locator}}" Icon="View/Image/main.png" TitlebarHeight="25">
     <controls:MetroWindow.BorderBrush>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="Black" Offset="0"/>
@@ -43,11 +43,10 @@
     <Window.Resources>
         <add:BookieConverter x:Key="Converter" />
     </Window.Resources>
-    <Grid  Name="CommonGrid">
-        <Grid Name="MenuGrid" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="27" Background="#FF646464">
+    <DockPanel  Name="CommonDockPanel">
+        <Grid Name="MenuGrid" DockPanel.Dock="Top" Height="27" Background="#FF646464">
             <Menu HorizontalAlignment="Left"  Margin="10,0,0,0" VerticalAlignment="Top" Background="#FF646464"  BorderBrush="#FF646464" Foreground="White" FontSize="12">
                 <MenuItem Header="Файл" Background="#FF646464" BorderBrush="#FF646464">
-
                     <MenuItem Header="Выход"  Command="{Binding ExitCommand}"  Foreground="Black"/>
                 </MenuItem>
                 <MenuItem Header="Браузер" Background="#FF646464"  BorderBrush="#FF646464">
@@ -58,7 +57,7 @@
                 </MenuItem>
             </Menu>
         </Grid>
-        <Grid Name="ToolBarGrid" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="30" Margin="0, 30,0, 0">
+        <Grid Name="ToolBarGrid" DockPanel.Dock="Top" Height="30" >
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                     <GradientStop Color="#FFBDC1C3" Offset="1"/>
@@ -72,8 +71,18 @@
                 <Button Content="Обновить" Height="25" VerticalAlignment="Top" Width="75" Command="{Binding UpdateCommand}"/>
             </ToolBar>
         </Grid>
-        <Grid Name="DataGridGrid" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0, 60,0, 0" Height="Auto" >
-            <DataGrid Name="DataGrid" VerticalAlignment="Top" HorizontalAlignment="Stretch" ItemsSource="{Binding Path=MainModel.Forks, Mode=TwoWay}"  AutoGenerateColumns="False" IsReadOnly="True" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserAddRows="False">
+        <Grid Name="StatusBarGrid" DockPanel.Dock="Bottom">
+            <StatusBar  Height="25"  >
+                <StatusBarItem >
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Актуальность:" Foreground="White" Padding="0" Margin="15,0,0,0"/>
+                        <TextBlock Text="{Binding MainModel.CurrentTime, StringFormat=H:mm:ss}" Margin="15,0,0,0"/>
+                    </StackPanel>
+                </StatusBarItem>
+            </StatusBar>
+        </Grid>
+        <Grid Name="DataGridGrid"  >
+            <DataGrid Name="DataGrid"  ItemsSource="{Binding Path=MainModel.Forks, Mode=TwoWay}"  AutoGenerateColumns="False" IsReadOnly="True" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserAddRows="False" >
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectionChanged">
                         <i:InvokeCommandAction Command="{Binding SelectionChangedCommand}" CommandParameter="{Binding Path=SelectedItems, ElementName=DataGrid}"/>
@@ -101,5 +110,5 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
-    </Grid>
+    </DockPanel>
 </controls:MetroWindow>

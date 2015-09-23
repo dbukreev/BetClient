@@ -27,13 +27,12 @@ namespace EFData
         }
     
         public virtual DbSet<categories> categories { get; set; }
-        public virtual DbSet<category_links> category_links { get; set; }
         public virtual DbSet<factors> factors { get; set; }
-        public virtual DbSet<factors_old> factors_old { get; set; }
         public virtual DbSet<forks> forks { get; set; }
-        public virtual DbSet<game_pages> game_pages { get; set; }
+        public virtual DbSet<game_names> game_names { get; set; }
         public virtual DbSet<matches> matches { get; set; }
         public virtual DbSet<pages> pages { get; set; }
+        public virtual DbSet<temp> temp { get; set; }
         public virtual DbSet<users> users { get; set; }
     }
 }

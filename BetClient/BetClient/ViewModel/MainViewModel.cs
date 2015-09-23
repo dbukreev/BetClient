@@ -71,6 +71,5 @@ namespace BetClient.ViewModel
 			var aboutWindow = new AboutWindow();
 			aboutWindow.ShowDialog();
 		}
-
 	}
 }

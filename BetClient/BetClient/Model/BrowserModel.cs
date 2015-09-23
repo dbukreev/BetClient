@@ -1,4 +1,5 @@
-﻿using EFData;
+﻿using System.Windows.Input;
+using EFData;
 
 namespace BetClient.Model
 {

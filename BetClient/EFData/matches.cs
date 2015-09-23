@@ -15,13 +15,13 @@ namespace EFData
     public partial class matches
     {
         public decimal id { get; set; }
-        public long games_id { get; set; }
-        public string name { get; set; }
         public int category_id { get; set; }
-        public Nullable<int> marathon { get; set; }
-        public Nullable<int> zenit { get; set; }
-        public Nullable<int> baltbet { get; set; }
-        public string order_by { get; set; }
+        public string site1 { get; set; }
+        public string game1 { get; set; }
+        public string site2 { get; set; }
+        public string game2 { get; set; }
+        public string name1 { get; set; }
+        public string name2 { get; set; }
         public System.DateTime created_at { get; set; }
         public System.DateTime updated_at { get; set; }
     }
