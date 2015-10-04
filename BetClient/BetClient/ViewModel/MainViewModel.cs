@@ -22,7 +22,6 @@ namespace BetClient.ViewModel
 			MainModel = new MainModel(dataService);
 			ExitCommand = new RelayCommand(OnExitCommand);
 			OpenBrowserCommand = new RelayCommand(OnOpenBrowserCommand);
-			UpdateCommand = new RelayCommand(OnUpdateCommand);
 			SelectionChangedCommand = new RelayCommand<IList>(OnSelectionChanged);
 			AboutCommand = new RelayCommand(OnAboutCommand);
 		}
@@ -33,7 +32,6 @@ namespace BetClient.ViewModel
 		public ICommand ExitCommand { get; set; }
 		public ICommand AboutCommand { get; set; }
 		public ICommand OpenBrowserCommand { get; set; }
-		public ICommand UpdateCommand { get; set; }
 		public ICommand SelectionChangedCommand { get; set; }
 
 		private void OnExitCommand()
@@ -53,11 +51,6 @@ namespace BetClient.ViewModel
 				DataContext = new BrowserViewModel(MainModel.SelectedFork)
 			};
 			browserWindow.ShowDialog();
-		}
-
-		private void OnUpdateCommand()
-		{
-			MainModel.GetForks();
 		}
 
 		private void OnSelectionChanged(IList selectedFork )

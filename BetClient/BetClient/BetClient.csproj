@@ -216,6 +216,13 @@
   <ItemGroup>
     <Resource Include="View\Image\about.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Image\refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Image\back.png" />
+    <Resource Include="View\Image\forward.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

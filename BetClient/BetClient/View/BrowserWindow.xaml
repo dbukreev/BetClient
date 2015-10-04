@@ -57,14 +57,48 @@
             </Grid.Background>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="4"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid Name="Browser1Grid"   Grid.Row="0">
-                <WebBrowser  add:WebBrowserUtility.BindableSource="{Binding BrowserModel.Site1}"  Margin="60,15,15, 15" />
+                <WebBrowser  add:WebBrowserUtility.BindableSource="{Binding BrowserModel.Site1}"  Margin="60,15,15, 34"/>
+                <Button Height="5" Width="25" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="90, 0, 0, 4">
+                    <Button.Content>
+                        <Image Source="Image/back.png"></Image>
+                    </Button.Content>
+                </Button>
+                <Button Height="5" Width="25"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="120, 0, 0, 4">
+                    <Button.Content>
+                        <Image Source="Image/forward.png"></Image>
+                    </Button.Content>
+                </Button>
+                <Button Height="5" Width="25"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="150, 0, 0, 4" Command="{Binding RefreshCommand1}">
+                    <Button.Content>
+                        <Image Source="Image/refresh.png"></Image>    
+                    </Button.Content>
+                </Button>
+                <TextBox  Width="500"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="180, 0, 0, 3" Text="{Binding BrowserModel.Site1, Mode=TwoWay}"/>
             </Grid>
-
-            <Grid Name="Browser2Grid" Grid.Row="1">
-                <WebBrowser add:WebBrowserUtility.BindableSource="{Binding BrowserModel.Site2}"  Margin="60,15,15, 15"/>
+            <Grid Name="GridSeparator" Grid.Row="1" Background="Gray">
+            </Grid>
+            <Grid Name="Browser2Grid" Grid.Row="2">
+                <WebBrowser add:WebBrowserUtility.BindableSource="{Binding BrowserModel.Site2}"  Margin="60,15,15, 34"/>
+                <Button Height="5" Width="25" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="90, 0, 0, 4">
+                    <Button.Content>
+                        <Image Source="Image/back.png"></Image>
+                    </Button.Content>
+                </Button>
+                <Button Height="5" Width="25"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="120, 0, 0, 4">
+                    <Button.Content>
+                        <Image Source="Image/forward.png"></Image>
+                    </Button.Content>
+                </Button>
+                <Button Height="5" Width="25"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="150, 0, 0, 4" Command="{Binding RefreshCommand2}">
+                    <Button.Content>
+                        <Image Source="Image/refresh.png"></Image>
+                    </Button.Content>
+                </Button>
+                <TextBox  Width="500"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="180, 0, 0, 3" Text="{Binding BrowserModel.Site2, Mode=TwoWay}"/>
             </Grid>
         </Grid>
     </Grid>

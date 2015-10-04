@@ -4,7 +4,7 @@
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
                       xmlns:add="clr-namespace:BetClient.Add"
                       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-                      Title="BetInLive v0.0.0.2"
+                      Title="BetInLive v0.0.0.3"
                       Height="600"
                       Width="900"
                       MinHeight="600"
@@ -68,7 +68,6 @@
                 <Button Content="Сделать ставки" Height="25" VerticalAlignment="Top" Width="95" Command="{Binding OpenBrowserCommand}"/>
                 <Button Content="Калькулятор" Height="25" VerticalAlignment="Top" Width="75"/>
                 <Button Content="Настройки" Height="25" VerticalAlignment="Top" Width="75"/>
-                <Button Content="Обновить" Height="25" VerticalAlignment="Top" Width="75" Command="{Binding UpdateCommand}"/>
             </ToolBar>
         </Grid>
         <Grid Name="StatusBarGrid" DockPanel.Dock="Bottom">

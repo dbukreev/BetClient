@@ -1,9 +1,10 @@
 ﻿using System.Windows.Input;
+using BetClient.Add;
 using EFData;
 
 namespace BetClient.Model
 {
-	public class BrowserModel
+	public class BrowserModel: NotifyPropertyChanged
 	{
 		public BrowserModel(forks fork)
 		{
@@ -13,8 +14,34 @@ namespace BetClient.Model
 			Сoefficient2 = fork.k_2;
 		}
 
-		public string Site1 { get; set; }
-		public string Site2 { get; set; }
+		private string _site1;
+
+		private string _site2;
+
+		public string Site1 {
+			get
+			{
+				return _site1;
+			}
+			set
+			{
+				_site1 = value;
+				OnPropertyChanged("Site1");
+			}
+		}
+
+		public string Site2
+		{
+			get
+			{
+				return _site2;
+			}
+			set
+			{
+				_site2 = value;
+				OnPropertyChanged("Site2");
+			}
+		}
 
 		public double Сoefficient1 { get; set; }
 		public double Сoefficient2 { get; set; }
