@@ -42,6 +42,8 @@
     </controls:MetroWindow.IconTemplate>
     <Window.Resources>
         <add:BookieConverter x:Key="Converter" />
+        <add:TypeConverter x:Key="Converter2" />
+        <add:TimeConverter x:Key="Converter3" />
     </Window.Resources>
     <DockPanel  Name="CommonDockPanel">
         <Grid Name="MenuGrid" DockPanel.Dock="Top" Height="27" Background="#FF646464">
@@ -93,7 +95,7 @@
                 </DataGrid.InputBindings>
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Время" Binding="{Binding time}" Width="*" MinWidth="100" MaxWidth="100"/>
+                    <DataGridTextColumn Header="Время" Binding="{Binding time, Converter={StaticResource Converter3}}" Width="*" MinWidth="60" />
                     <DataGridTextColumn Header="Чемпионат" Binding="{Binding champ}" Width="*" MinWidth="100"/>
                     <DataGridTextColumn Header="Событие" Binding="{Binding name_1}" Width="*" MinWidth="200"/>
                     <DataGridTextColumn Header="Букмекеры" Width="*" MinWidth="150" >
@@ -104,7 +106,15 @@
                             </MultiBinding>
                         </DataGridTextColumn.Binding>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="Тип" Binding="{Binding type_ru}" Width="*" MinWidth="90"/>
+                    <DataGridTextColumn Header="Тип" Width="*" MinWidth="40">
+                        <DataGridTextColumn.Binding>
+                            <MultiBinding Converter="{StaticResource Converter2}">
+                                <Binding Path="type_ru" />
+                                <Binding Path="type_1" />
+                                <Binding Path="type_2" />
+                            </MultiBinding>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
                     <DataGridTextColumn Header="Прибыль" Binding="{Binding plus}" Width="*" MinWidth="90"/>
                 </DataGrid.Columns>
             </DataGrid>
