@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 using BetClient.Model;
+using BetClient.View;
 using EFData;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
@@ -14,6 +15,7 @@ namespace BetClient.ViewModel
 			BrowserModel = new BrowserModel(fork);
 			RefreshCommand1 = new RelayCommand(OnRefresh1);
 			RefreshCommand2 = new RelayCommand(OnRefresh2);
+			CalcCommand = new RelayCommand(OnCalcCommand);
 		}
 
 		public ICommand RefreshCommand1 { get; set; }
@@ -23,6 +25,8 @@ namespace BetClient.ViewModel
 		public ICommand BackCommand { get; set; }
 
 		public ICommand ForwardCommand { get; set; }
+
+		public ICommand CalcCommand { get; set; }
 
 		public BrowserModel BrowserModel { get; set; }
 
@@ -38,6 +42,12 @@ namespace BetClient.ViewModel
 			var tmp = BrowserModel.Site2;
 			BrowserModel.Site2 = String.Empty;
 			BrowserModel.Site2 = tmp;
+		}
+
+		private void OnCalcCommand()
+		{
+			var calcWindow = new CalcWindow();
+			calcWindow.ShowDialog();
 		}
 	}
 }

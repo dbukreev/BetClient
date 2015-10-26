@@ -45,7 +45,7 @@
             </Grid.Background>
             <ToolBar>
                 <Button Content="Настройки" Height="25" VerticalAlignment="Top" Width="95"/>
-                <Button Content="Калькулятор" Height="25" VerticalAlignment="Top" Width="75"/>
+                <Button Content="Калькулятор" Height="25" VerticalAlignment="Top" Width="75" Command="{Binding CalcCommand}"/>
             </ToolBar>
         </Grid>
         <Grid Name="BrowsersGrid" Grid.Row="1" >

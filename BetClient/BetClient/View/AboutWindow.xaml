@@ -37,7 +37,7 @@
     <Grid Background="#FFF9F9F9">
         <Image HorizontalAlignment="Left" Height="64" Margin="25,25,0,0" VerticalAlignment="Top" Width="64" Source="Image/main_64x64.png"/>
         <Label Content="BetInLive" HorizontalAlignment="Left" Margin="114,9,0,0" VerticalAlignment="Top" Height="64" Width="168" FontSize="40" FontFamily="Segoe UI" Foreground="#FF646264"/>
-        <Label Content="v 0.0.0.3" HorizontalAlignment="Left" Margin="120,58,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Segoe UI" Foreground="#FF646264"/>
+        <Label Content="v 0.0.0.4" HorizontalAlignment="Left" Margin="120,58,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Segoe UI" Foreground="#FF646264"/>
         <Button Content="Ok" HorizontalAlignment="Right" Margin="0,0,15,15" VerticalAlignment="Bottom" Width="75" Command="{Binding OkCommand}"/>
         <Label Content="© 2015 MySoft Inc." HorizontalAlignment="Left" Margin="25,0,0,15" VerticalAlignment="Bottom" FontFamily="Segoe UI" Foreground="#FF646264" Padding="0"/>
         <Label Content="Support: d.bukreev@live.ru" HorizontalAlignment="Left" Margin="25,0,0,40" VerticalAlignment="Bottom" FontFamily="Segoe UI" Foreground="#FF646264" Padding="0"/>

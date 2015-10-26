@@ -4,7 +4,7 @@
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
                       xmlns:add="clr-namespace:BetClient.Add"
                       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-                      Title="BetInLive v0.0.0.3"
+                      Title="BetInLive v0.0.0.4"
                       Height="600"
                       Width="900"
                       MinHeight="600"
@@ -68,7 +68,7 @@
             </Grid.Background>
             <ToolBar>
                 <Button Content="Сделать ставки" Height="25" VerticalAlignment="Top" Width="95" Command="{Binding OpenBrowserCommand}"/>
-                <Button Content="Калькулятор" Height="25" VerticalAlignment="Top" Width="75"/>
+                <Button Content="Калькулятор" Height="25" VerticalAlignment="Top" Width="75" Command="{Binding CalcCommand}"/>
                 <Button Content="Настройки" Height="25" VerticalAlignment="Top" Width="75"/>
             </ToolBar>
         </Grid>
@@ -106,7 +106,7 @@
                             </MultiBinding>
                         </DataGridTextColumn.Binding>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="Тип" Width="*" MinWidth="40">
+                    <DataGridTextColumn Header="Тип" Width="*" MinWidth="100">
                         <DataGridTextColumn.Binding>
                             <MultiBinding Converter="{StaticResource Converter2}">
                                 <Binding Path="type_ru" />
@@ -115,6 +115,8 @@
                             </MultiBinding>
                         </DataGridTextColumn.Binding>
                     </DataGridTextColumn>
+                    <DataGridTextColumn Header="K1" Binding="{Binding k_1}" Width="*" MinWidth="40"/>
+                    <DataGridTextColumn Header="K2" Binding="{Binding k_2}" Width="*" MinWidth="40"/>
                     <DataGridTextColumn Header="Прибыль" Binding="{Binding plus}" Width="*" MinWidth="90"/>
                 </DataGrid.Columns>
             </DataGrid>

@@ -1,5 +1,4 @@
-﻿using System.Windows.Input;
-using BetClient.Add;
+﻿using BetClient.Add;
 using EFData;
 
 namespace BetClient.Model
