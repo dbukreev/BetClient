@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:add="clr-namespace:BetClient.Add"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         WindowTransitionsEnabled="False"
                       Icon="Image/main.png" 
         Title="Сделать ставки" Height="600" Width="900" MinHeight="300" MinWidth="400" TitleCaps="False" WindowStartupLocation="CenterScreen">
@@ -61,44 +62,66 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid Name="Browser1Grid"   Grid.Row="0">
-                <WebBrowser  add:WebBrowserUtility.BindableSource="{Binding BrowserModel.Site1}"  Margin="60,15,15, 34"/>
-                <Button Height="5" Width="25" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="90, 0, 0, 4">
+                <WebBrowser Name="Browser1" add:WebBrowserUtility.BindableSource="{Binding BrowserModel.Site1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Margin="60,15,15, 34">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Navigated">
+                            <i:InvokeCommandAction Command="{Binding Path=NavigationCommand1}" CommandParameter="{Binding ElementName=Browser1}"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="LoadCompleted">
+                            <i:InvokeCommandAction Command="{Binding Path=LoadedCommand1}" CommandParameter="{Binding ElementName=Browser1}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </WebBrowser>
+                <Button  Name="ButtonBack1" Height="5" Width="25" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="90, 0, 0, 4" Command="{Binding BackCommand1}" CommandParameter="{Binding ElementName=Browser1}">
                     <Button.Content>
                         <Image Source="Image/back.png"></Image>
                     </Button.Content>
                 </Button>
-                <Button Height="5" Width="25"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="120, 0, 0, 4">
+                <Button Name="ButtonForward1" Height="5" Width="25"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="120, 0, 0, 4" Command="{Binding ForwardCommand1}" CommandParameter="{Binding ElementName=Browser1}">
                     <Button.Content>
                         <Image Source="Image/forward.png"></Image>
                     </Button.Content>
                 </Button>
-                <Button Height="5" Width="25"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="150, 0, 0, 4" Command="{Binding RefreshCommand1}">
-                    <Button.Content>
-                        <Image Source="Image/refresh.png"></Image>    
-                    </Button.Content>
-                </Button>
-                <TextBox  Width="500"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="180, 0, 0, 3" Text="{Binding BrowserModel.Site1, Mode=TwoWay}"/>
-            </Grid>
-            <Grid Name="GridSeparator" Grid.Row="1" Background="Gray">
-            </Grid>
-            <Grid Name="Browser2Grid" Grid.Row="2">
-                <WebBrowser add:WebBrowserUtility.BindableSource="{Binding BrowserModel.Site2}"  Margin="60,15,15, 34"/>
-                <Button Height="5" Width="25" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="90, 0, 0, 4">
-                    <Button.Content>
-                        <Image Source="Image/back.png"></Image>
-                    </Button.Content>
-                </Button>
-                <Button Height="5" Width="25"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="120, 0, 0, 4">
-                    <Button.Content>
-                        <Image Source="Image/forward.png"></Image>
-                    </Button.Content>
-                </Button>
-                <Button Height="5" Width="25"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="150, 0, 0, 4" Command="{Binding RefreshCommand2}">
+                <Button Name="ButtonUpdate1" Height="5" Width="25"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="150, 0, 0, 4" Command="{Binding RefreshCommand1}" CommandParameter="{Binding ElementName=Browser1}">
                     <Button.Content>
                         <Image Source="Image/refresh.png"></Image>
                     </Button.Content>
                 </Button>
-                <TextBox  Width="500"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="180, 0, 0, 3" Text="{Binding BrowserModel.Site2, Mode=TwoWay}"/>
+                <TextBox  Width="500"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="180, 0, 0, 3" Text="{Binding BrowserModel.Text1, Mode=TwoWay}" IsReadOnly="True"/>
+            </Grid>
+            <Grid Name="GridSeparator" Grid.Row="1" Background="Gray">
+            </Grid>
+            <Grid Name="Browser2Grid" Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="361*"/>
+                    <ColumnDefinition Width="531*"/>
+                </Grid.ColumnDefinitions>
+                <WebBrowser  Name="Browser2" add:WebBrowserUtility.BindableSource="{Binding BrowserModel.Site2}"  Margin="60,15,15, 34" Grid.ColumnSpan="2">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Navigated">
+                            <i:InvokeCommandAction Command="{Binding Path=NavigationCommand2}" CommandParameter="{Binding ElementName=Browser2}"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="LoadCompleted">
+                            <i:InvokeCommandAction Command="{Binding Path=LoadedCommand2}" CommandParameter="{Binding ElementName=Browser2}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </WebBrowser>
+                <Button Name="ButtonBack2" Height="5" Width="25" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="90, 0, 0, 4" Command="{Binding BackCommand2}" CommandParameter="{Binding ElementName=Browser2}">
+                    <Button.Content>
+                        <Image Source="Image/back.png"></Image>
+                    </Button.Content>
+                </Button>
+                <Button Name="ButtonForward2" Height="5" Width="25"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="120, 0, 0, 4" Command="{Binding ForwardCommand2}" CommandParameter="{Binding ElementName=Browser2}">
+                    <Button.Content>
+                        <Image Source="Image/forward.png"></Image>
+                    </Button.Content>
+                </Button>
+                <Button  Name="ButtonUpdate2" Height="5" Width="25"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="150, 0, 0, 4" Command="{Binding RefreshCommand2}" CommandParameter="{Binding ElementName=Browser2}">
+                    <Button.Content>
+                        <Image Source="Image/refresh.png"></Image>
+                    </Button.Content>
+                </Button>
+                <TextBox  Width="500"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="180, 0, 0, 3" Text="{Binding BrowserModel.Text2, Mode=TwoWay}" IsReadOnly="True" Grid.ColumnSpan="2"/>
             </Grid>
         </Grid>
     </Grid>

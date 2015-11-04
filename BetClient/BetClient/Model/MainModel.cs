@@ -66,7 +66,7 @@ namespace BetClient.Model
 			{
 				Forks = _dataService.GetForks();
 				CurrentTime = DateTime.Now;
-				Thread.Sleep(3000);
+				Thread.Sleep(2000);
 			}
 		}
 	}

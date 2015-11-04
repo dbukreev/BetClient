@@ -16,6 +16,7 @@ namespace BetClient.Service
 
 		public ObservableCollection<forks> GetForks()
 		{
+			//return _entities.forks.Where(_=>_.plus > 0).Select(_ => _).ToObservableCollection();
 			return _entities.forks.Select(_ => _).ToObservableCollection();
 		}
 	}

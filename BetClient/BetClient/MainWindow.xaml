@@ -83,7 +83,7 @@
             </StatusBar>
         </Grid>
         <Grid Name="DataGridGrid"  >
-            <DataGrid Name="DataGrid"  ItemsSource="{Binding Path=MainModel.Forks, Mode=TwoWay}"  AutoGenerateColumns="False" IsReadOnly="True" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserAddRows="False" >
+            <DataGrid Name="DataGrid"  ItemsSource="{Binding Path=MainModel.Forks, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  AutoGenerateColumns="False" IsReadOnly="True" CanUserDeleteRows="False" CanUserResizeRows="False" CanUserAddRows="False" >
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectionChanged">
                         <i:InvokeCommandAction Command="{Binding SelectionChangedCommand}" CommandParameter="{Binding Path=SelectedItems, ElementName=DataGrid}"/>
