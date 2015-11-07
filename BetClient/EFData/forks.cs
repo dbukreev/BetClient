@@ -24,7 +24,6 @@ namespace EFData
         public string name_2 { get; set; }
         public string site_1 { get; set; }
         public string site_2 { get; set; }
-        public string time { get; set; }
         public string type_1 { get; set; }
         public string type_2 { get; set; }
         public float k_1 { get; set; }
@@ -34,5 +33,7 @@ namespace EFData
         public string type_ru { get; set; }
         public System.DateTime updated_at { get; set; }
         public System.DateTime created_at { get; set; }
+        public string time_1 { get; set; }
+        public string time_2 { get; set; }
     }
 }

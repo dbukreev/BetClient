@@ -22,5 +22,7 @@ namespace EFData
         public bool status { get; set; }
         public System.DateTime updated_at { get; set; }
         public System.DateTime created_at { get; set; }
+        public string sub_games { get; set; }
+        public string link { get; set; }
     }
 }

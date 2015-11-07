@@ -110,6 +110,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Add\GainConverter.cs" />
+    <Compile Include="Add\CoeffConverter.cs" />
     <Compile Include="Add\TimeConverter.cs" />
     <Compile Include="Add\TypeConverter.cs" />
     <Compile Include="Add\BookieConverter.cs" />

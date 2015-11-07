@@ -6,12 +6,13 @@
                       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
                       Title="BetInLive v0.0.0.4"
                       Height="600"
-                      Width="900"
+                      Width="1100"
                       MinHeight="600"
                       MinWidth="900"
                       ResizeMode="CanResizeWithGrip"
                       WindowTransitionsEnabled="False"
                       WindowStartupLocation="CenterScreen" 
+                      WindowState="Maximized"
                       TitleCaps="False"
                       BorderThickness="1"
                        DataContext= "{Binding Main, Source={StaticResource Locator}}" Icon="View/Image/main.png" TitlebarHeight="25">
@@ -44,6 +45,7 @@
         <add:BookieConverter x:Key="Converter" />
         <add:TypeConverter x:Key="Converter2" />
         <add:TimeConverter x:Key="Converter3" />
+        <add:CoeffConverter x:Key="Converter4" />
     </Window.Resources>
     <DockPanel  Name="CommonDockPanel">
         <Grid Name="MenuGrid" DockPanel.Dock="Top" Height="27" Background="#FF646464">
@@ -95,10 +97,17 @@
                 </DataGrid.InputBindings>
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Время" Binding="{Binding time, Converter={StaticResource Converter3}}" Width="*" MinWidth="60" />
-                    <DataGridTextColumn Header="Чемпионат" Binding="{Binding champ}" Width="*" MinWidth="100"/>
-                    <DataGridTextColumn Header="Событие" Binding="{Binding name_1}" Width="*" MinWidth="200"/>
-                    <DataGridTextColumn Header="Букмекеры" Width="*" MinWidth="150" >
+                    <DataGridTextColumn Header="Время Б1 / Б2" Width="*" MinWidth="100" MaxWidth="130">
+                        <DataGridTextColumn.Binding>
+                            <MultiBinding Converter="{StaticResource Converter3}">
+                                <Binding Path="time_1" />
+                                <Binding Path="time_2" />
+                            </MultiBinding>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Чемпионат" Binding="{Binding champ}" Width="*" MinWidth="100" MaxWidth="130"/>
+                    <DataGridTextColumn Header="Событие" Binding="{Binding name_1}" Width="*" MinWidth="290"/>
+                    <DataGridTextColumn Header="Букмекеры" Width="*" MinWidth="150" MaxWidth="170" >
                         <DataGridTextColumn.Binding>
                             <MultiBinding Converter="{StaticResource Converter}">
                                 <Binding Path="site_1" />
@@ -106,18 +115,24 @@
                             </MultiBinding>
                         </DataGridTextColumn.Binding>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="Тип" Width="*" MinWidth="100">
+                    <DataGridTextColumn Header="Тип" Width="*" MinWidth="130" MaxWidth="190">
                         <DataGridTextColumn.Binding>
                             <MultiBinding Converter="{StaticResource Converter2}">
-                                <Binding Path="type_ru" />
                                 <Binding Path="type_1" />
                                 <Binding Path="type_2" />
                             </MultiBinding>
                         </DataGridTextColumn.Binding>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="K1" Binding="{Binding k_1}" Width="*" MinWidth="40"/>
-                    <DataGridTextColumn Header="K2" Binding="{Binding k_2}" Width="*" MinWidth="40"/>
-                    <DataGridTextColumn Header="Прибыль" Binding="{Binding plus}" Width="*" MinWidth="90"/>
+                    <DataGridTextColumn Header="Где искать" Binding="{Binding type_ru}" Width="*" MinWidth="100"/>
+                    <DataGridTextColumn Header="K1 / K2" Width="*" MinWidth="90" MaxWidth="140">
+                    <DataGridTextColumn.Binding>
+                        <MultiBinding Converter="{StaticResource Converter4}">
+                            <Binding Path="k_1" />
+                            <Binding Path="k_2" />
+                        </MultiBinding>
+                    </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Прибыль" Binding="{Binding plus}" Width="*" MinWidth="90" MaxWidth="140"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Threading;
+using System.Windows;
 using BetClient.Add;
 using BetClient.Service;
 using EFData;
@@ -12,7 +13,15 @@ namespace BetClient.Model
 		public MainModel(IDataService dataService)
 		{
 			_dataService = dataService;
-			GetForks();
+			try
+			{
+				GetForks();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Error {0}", ex.ToString());
+			}
+			
 		}
 
 		private readonly IDataService _dataService;

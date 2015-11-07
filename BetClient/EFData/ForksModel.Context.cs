@@ -12,8 +12,7 @@ namespace EFData
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
-	[DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
+    
     public partial class ForksEntities : DbContext
     {
         public ForksEntities()
@@ -34,5 +33,6 @@ namespace EFData
         public virtual DbSet<pages> pages { get; set; }
         public virtual DbSet<temp> temp { get; set; }
         public virtual DbSet<users> users { get; set; }
+        public virtual DbSet<workers> workers { get; set; }
     }
 }

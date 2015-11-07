@@ -104,6 +104,9 @@
     <Compile Include="users.cs">
       <DependentUpon>ForksModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="workers.cs">
+      <DependentUpon>ForksModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -12,17 +12,17 @@ namespace EFData
     using System;
     using System.Collections.Generic;
     
-    public partial class categories
+    public partial class workers
     {
         public int id { get; set; }
         public string name { get; set; }
-        public int category_id { get; set; }
-        public Nullable<int> marathon_id { get; set; }
-        public Nullable<int> zenit_id { get; set; }
-        public Nullable<int> baltbet_id { get; set; }
-        public int xbet_id { get; set; }
+        public string fun_class { get; set; }
+        public string fun_name { get; set; }
+        public string server { get; set; }
+        public int port { get; set; }
+        public int queue { get; set; }
+        public bool status { get; set; }
         public System.DateTime updated_at { get; set; }
         public System.DateTime created_at { get; set; }
-        public int fonbet_id { get; set; }
     }
 }
