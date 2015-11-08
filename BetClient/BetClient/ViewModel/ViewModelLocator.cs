@@ -21,6 +21,7 @@ namespace BetClient.ViewModel
 			SimpleIoc.Default.Register<MainViewModel>();
 			//SimpleIoc.Default.Register<BrowserViewModel>();
 			SimpleIoc.Default.Register<LoginViewModel>();
+			//SimpleIoc.Default.Register<BookieSettingsViewModel>();
 			SimpleIoc.Default.Register<AboutViewModel>();
 			SimpleIoc.Default.Register<CalcViewModel>();
 		}
@@ -48,6 +49,14 @@ namespace BetClient.ViewModel
 				return ServiceLocator.Current.GetInstance<LoginViewModel>();
 			}
 		}
+
+		//public BookieSettingsViewModel BookieSettings
+		//{
+		//	get
+		//	{
+		//		return ServiceLocator.Current.GetInstance<BookieSettingsViewModel>();
+		//	}
+		//}
 
 		public CalcViewModel Calc
 		{

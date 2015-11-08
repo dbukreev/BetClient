@@ -25,6 +25,7 @@ namespace BetClient.ViewModel
 			SelectionChangedCommand = new RelayCommand<IList>(OnSelectionChanged);
 			AboutCommand = new RelayCommand(OnAboutCommand);
 			CalcCommand = new RelayCommand(OnCalcCommand);
+			BookieSettingsCommand = new RelayCommand(OnBookieSettingsCommand);
 		}
 
 	
@@ -34,7 +35,7 @@ namespace BetClient.ViewModel
 		public ICommand AboutCommand { get; set; }
 		public ICommand OpenBrowserCommand { get; set; }
 		public ICommand SelectionChangedCommand { get; set; }
-
+		public ICommand BookieSettingsCommand { get; set; }
 		public ICommand CalcCommand { get; set; }
 
 		private void OnExitCommand()
@@ -72,6 +73,15 @@ namespace BetClient.ViewModel
 		{
 			var calcWindow = new CalcWindow();
 			calcWindow.ShowDialog();
+		}
+
+		private void OnBookieSettingsCommand()
+		{
+			var window = new BookieSettingsWindow
+			{
+				DataContext = new BookieSettingsViewModel()
+			};
+			window.ShowDialog();
 		}
 	}
 }

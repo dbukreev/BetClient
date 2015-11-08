@@ -245,8 +245,8 @@ namespace BetClient.Model
 			Sum2 = Math.Round(commonGain / Fork.k_2, 2, MidpointRounding.AwayFromZero);
 			Gain1 = Math.Round(Fork.k_1 * Sum1, 2, MidpointRounding.AwayFromZero);
 			Gain2 = Math.Round(Fork.k_2 * Sum2, 2, MidpointRounding.AwayFromZero);
-			WinGain1 = Math.Round(Gain1 - Sum1, 2, MidpointRounding.AwayFromZero);
-			WinGain2 = Math.Round(Gain2 - Sum2, 2, MidpointRounding.AwayFromZero);
+			WinGain1 = Math.Round(Gain1 - Sum, 2, MidpointRounding.AwayFromZero);
+			WinGain2 = Math.Round(Gain2 - Sum, 2, MidpointRounding.AwayFromZero);
 			WinPercent1 = Math.Round(Gain1 * 100 / Sum - 100, 2, MidpointRounding.AwayFromZero);
 			WinPercent2 = Math.Round(Gain2 * 100 / Sum - 100, 2, MidpointRounding.AwayFromZero);
 		}

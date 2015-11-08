@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using BetClient.Add;
 using BetClient.Model;
+using BetClient.Properties;
 using BetClient.View;
 using EFData;
 using GalaSoft.MvvmLight;
@@ -231,7 +232,9 @@ namespace BetClient.ViewModel
 
 		private void AuthorizationBaltbet(WebBrowser browser)
 		{
-			if (browser.Document == null)
+			if (Settings.Default.BaltbetIsAutoLogin)
+			{
+					if (browser.Document == null)
 				return;
 			/*нажимаем кнопку "Войти", для открытия окна авторизации*/
 
@@ -244,94 +247,109 @@ namespace BetClient.ViewModel
 
 			inButton.click();
 
-			((mshtml.HTMLDocument)browser.Document).getElementById("TextBoxLogin").setAttribute("value", "dbukreev");
+			((mshtml.HTMLDocument)browser.Document).getElementById("TextBoxLogin").setAttribute("value", Settings.Default.BaltbetLogin);
 
-			((mshtml.HTMLDocument)browser.Document).getElementById("TextBoxPwd").setAttribute("value", "Qazqwerty21");
+			((mshtml.HTMLDocument)browser.Document).getElementById("TextBoxPwd").setAttribute("value", Settings.Default.BaltbetPassword);
 
 			((mshtml.HTMLDocument)browser.Document).getElementById("in").click();
+			}
 		}
 
 		private void AuthorizationMarathon(WebBrowser browser)
 		{
-			if (browser.Document == null)
-				return;
+			if (Settings.Default.MarathonIsAutoLogin)
+			{
+				if (browser.Document == null)
+					return;
 
-			var inButton = (((mshtml.HTMLDocument)browser.Document)
-				.getElementsByTagName("a")
-				.OfType<mshtml.IHTMLElement>()
-				.FirstOrDefault(_ => _.className == "but-login"));
+				var inButton = (((mshtml.HTMLDocument) browser.Document)
+					.getElementsByTagName("a")
+					.OfType<mshtml.IHTMLElement>()
+					.FirstOrDefault(_ => _.className == "but-login"));
 
-			if (inButton == null)
-				return;
+				if (inButton == null)
+					return;
 
-			((mshtml.HTMLDocument)browser.Document).getElementById("auth_login").setAttribute("value", "8017852");
+				((mshtml.HTMLDocument)browser.Document).getElementById("auth_login").setAttribute("value", Settings.Default.MarathonLogin);
 
-			((mshtml.HTMLDocument)browser.Document).getElementById("auth_login_password").setAttribute("value", "Qazqwerty21");
+				((mshtml.HTMLDocument)browser.Document).getElementById("auth_login_password").setAttribute("value", Settings.Default.MarathonPassword);
 
-			inButton.click();
+				inButton.click();
+			}
 		}
 
 		private void AuthorizationZenit(WebBrowser browser, int game)
 		{
-			if (browser.Document == null)
-				return;
-
-			var inButton = (((mshtml.HTMLDocument) browser.Document).getElementById("auth"));
-
-			if (inButton != null)
+			if (Settings.Default.ZenitIsAutoLogin)
 			{
-				((mshtml.HTMLDocument)browser.Document).getElementById("ilogin").setAttribute("value", "2817394");
+				if (browser.Document == null)
+					return;
 
-				((mshtml.HTMLDocument)browser.Document).getElementById("password").setAttribute("value", "Qazqwerty21");
+				var inButton = (((mshtml.HTMLDocument) browser.Document).getElementById("auth"));
 
-				inButton.click();
+				if (inButton != null)
+				{
+					((mshtml.HTMLDocument) browser.Document).getElementById("ilogin").setAttribute("value", Settings.Default.ZenitLogin);
+
+					((mshtml.HTMLDocument) browser.Document).getElementById("password").setAttribute("value", Settings.Default.ZenitPassword);
+
+					inButton.click();
+				}
+
+				var checkbox =
+					(((mshtml.HTMLDocument) browser.Document).getElementById("gid" +
+					                                                         (game == 1 ? BrowserModel.GameId1 : BrowserModel.GameId2)));
+				if (checkbox != null)
+				{
+					checkbox.click();
+					(((mshtml.HTMLDocument) browser.Document).getElementById("do")).click();
+				}
 			}
 
-			var checkbox = (((mshtml.HTMLDocument)browser.Document).getElementById("gid" + (game == 1 ? BrowserModel.GameId1 : BrowserModel.GameId2)));
-			if(checkbox != null)
-			{
-				checkbox.click();
-				(((mshtml.HTMLDocument)browser.Document).getElementById("do")).click();
-			}
-			
 		}
 
 		private void AuthorizationFonbet(WebBrowser browser)
 		{
-			if (browser.Document == null)
-				return;
+			if (Settings.Default.FonbetIsAutoLogin)
+			{
+				if (browser.Document == null)
+					return;
 
-			var inButton = (((mshtml.HTMLDocument)browser.Document).getElementById("loginButtonLogin"));
+				var inButton = (((mshtml.HTMLDocument) browser.Document).getElementById("loginButtonLogin"));
 
-			if (inButton == null)
-				return;
+				if (inButton == null)
+					return;
 
-			((mshtml.HTMLDocument)browser.Document).getElementById("editLogin").setAttribute("value", "2385150");
+				((mshtml.HTMLDocument)browser.Document).getElementById("editLogin").setAttribute("value", Settings.Default.FonbetLogin);
 
-			((mshtml.HTMLDocument)browser.Document).getElementById("editPassword").setAttribute("value", "Qazqwerty2");
+				((mshtml.HTMLDocument)browser.Document).getElementById("editPassword").setAttribute("value", Settings.Default.FonbetPassword);
 
-			inButton.click();
+				inButton.click();
+			}
 		}
 
 		private void AuthorizationXbet(WebBrowser browser)
 		{
-			if (browser.Document == null) 
-				return;
+			if (Settings.Default.XbetIsAutoLogin)
+			{
+				if (browser.Document == null)
+					return;
 
-			var inButton = (((mshtml.HTMLDocument)browser.Document)
-				.getElementsByTagName("div")
-				.OfType<mshtml.IHTMLElement>()
-				.FirstOrDefault(_ => _.className == "loginDropTop_con"));
-			if(inButton == null)
-				return;
+				var inButton = (((mshtml.HTMLDocument) browser.Document)
+					.getElementsByTagName("div")
+					.OfType<mshtml.IHTMLElement>()
+					.FirstOrDefault(_ => _.className == "loginDropTop_con"));
+				if (inButton == null)
+					return;
 
-			inButton.click();
+				inButton.click();
 
-			((mshtml.HTMLDocument)browser.Document).getElementById("userLogin").setAttribute("value", "5634101");
+				((mshtml.HTMLDocument) browser.Document).getElementById("userLogin").setAttribute("value", Settings.Default.XbetLogin);
 
-			((mshtml.HTMLDocument)browser.Document).getElementById("userPassword").setAttribute("value", "Qazqwerty2");
+				((mshtml.HTMLDocument) browser.Document).getElementById("userPassword").setAttribute("value", Settings.Default.XbetPassword);
 
-			((mshtml.HTMLDocument)browser.Document).getElementById("userConButton").click();
+				((mshtml.HTMLDocument) browser.Document).getElementById("userConButton").click();
+			}
 		}
 
 		public void HideScriptErrors(WebBrowser wb, bool Hide)

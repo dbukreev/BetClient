@@ -16,8 +16,8 @@ namespace BetClient.Service
 
 		public ObservableCollection<forks> GetForks()
 		{
-			//return _entities.forks.Where(_=>_.plus > 0).OrderByDescending(_=>_.plus).Select(_ => _).ToObservableCollection();
-			return _entities.forks.OrderByDescending(_ => _.plus).Select(_ => _).ToObservableCollection();
+			return _entities.forks.Where(_=>_.plus > 0).OrderByDescending(_=>_.plus).Select(_ => _).ToObservableCollection();
+			//return _entities.forks.OrderByDescending(_ => _.plus).Select(_ => _).ToObservableCollection();
 		}
 
 		public string GetXbetLink(long gameId)
