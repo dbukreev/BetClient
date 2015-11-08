@@ -1,4 +1,4 @@
-using System;
+п»їusing System;
 using System.Collections;
 using System.Linq;
 using System.Windows;
@@ -45,7 +45,7 @@ namespace BetClient.ViewModel
 		{
 			if (MainModel.SelectedFork == null)
 			{
-				MessageBox.Show("Не выбрана вилка.");
+				MessageBox.Show("РќРµ РІС‹Р±СЂР°РЅР° РІРёР»РєР°.");
 				return;
 			}
 

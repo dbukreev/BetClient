@@ -1,6 +1,8 @@
 ﻿using System.Linq;
+using System.Reflection;
 using System.Windows.Controls;
 using System.Windows.Input;
+using BetClient.Add;
 using BetClient.Model;
 using BetClient.View;
 using EFData;
@@ -74,10 +76,13 @@ namespace BetClient.ViewModel
 		public void OnNavigation1(WebBrowser browser)
 		{
 			BrowserModel.Text1 = browser.Source.AbsoluteUri;
+			//SetSilentClass.SetSilent(browser, true);
+			HideScriptErrors(browser, true);
 		}
 
 		public void OnLoaded1(WebBrowser browser)
 		{
+			//HideScriptErrors(browser, true);
 			switch (BrowserModel.Bookie1)
 			{
 				case "baltbet":
@@ -92,7 +97,17 @@ namespace BetClient.ViewModel
 				}
 				case "zenit":
 				{
-					AuthorizationZenit(browser);
+					AuthorizationZenit(browser, 1);
+					break;
+				}
+				case "fonbet":
+				{
+					AuthorizationFonbet(browser);
+					break;
+				}
+				case "xbet":
+				{
+					AuthorizationXbet(browser);
 					break;
 				}
 			}
@@ -101,6 +116,8 @@ namespace BetClient.ViewModel
 		public void OnNavigation2(WebBrowser browser)
 		{
 			BrowserModel.Text2 = browser.Source.AbsoluteUri;
+			HideScriptErrors(browser, true);
+			//SetSilentClass.SetSilent(browser, true);
 		}
 
 		public void OnRefresh2(WebBrowser browser)
@@ -136,7 +153,17 @@ namespace BetClient.ViewModel
 					}
 				case "zenit":
 					{
-						AuthorizationZenit(browser);
+						AuthorizationZenit(browser, 2);
+						break;
+					}
+				case "fonbet":
+					{
+						AuthorizationFonbet(browser);
+						break;
+					}
+				case "xbet":
+					{
+						AuthorizationXbet(browser);
 						break;
 					}
 			}
@@ -190,25 +217,76 @@ namespace BetClient.ViewModel
 			inButton.click();
 		}
 
-		private void AuthorizationZenit(WebBrowser browser)
+		private void AuthorizationZenit(WebBrowser browser, int game)
 		{
 			if (browser.Document == null)
 				return;
 
 			var inButton = (((mshtml.HTMLDocument) browser.Document).getElementById("auth"));
 
+			if (inButton != null)
+			{
+				((mshtml.HTMLDocument)browser.Document).getElementById("ilogin").setAttribute("value", "2817394");
+
+				((mshtml.HTMLDocument)browser.Document).getElementById("password").setAttribute("value", "Qazqwerty21");
+
+				inButton.click();
+			}
+
+			var checkbox = (((mshtml.HTMLDocument)browser.Document).getElementById("gid" + (game == 1 ? BrowserModel.GameId1 : BrowserModel.GameId2)));
+			if(checkbox != null)
+			{
+				checkbox.click();
+				(((mshtml.HTMLDocument)browser.Document).getElementById("do")).click();
+			}
+			
+		}
+
+		private void AuthorizationFonbet(WebBrowser browser)
+		{
+			if (browser.Document == null)
+				return;
+
+			var inButton = (((mshtml.HTMLDocument)browser.Document).getElementById("loginButtonLogin"));
+
 			if (inButton == null)
 				return;
 
-			((mshtml.HTMLDocument)browser.Document).getElementById("ilogin").setAttribute("value", "2817394");
+			((mshtml.HTMLDocument)browser.Document).getElementById("editLogin").setAttribute("value", "2385150");
 
-			((mshtml.HTMLDocument)browser.Document).getElementById("password").setAttribute("value", "Qazqwerty21");
+			((mshtml.HTMLDocument)browser.Document).getElementById("editPassword").setAttribute("value", "Qazqwerty2");
+
+			inButton.click();
+		}
+
+		private void AuthorizationXbet(WebBrowser browser)
+		{
+			if (browser.Document == null) 
+				return;
+
+			var inButton = (((mshtml.HTMLDocument)browser.Document)
+				.getElementsByTagName("div")
+				.OfType<mshtml.IHTMLElement>()
+				.FirstOrDefault(_ => _.className == "loginDropTop_con"));
+			if(inButton == null)
+				return;
 
 			inButton.click();
 
+			((mshtml.HTMLDocument)browser.Document).getElementById("userLogin").setAttribute("value", "5634101");
 
-			//(((mshtml.HTMLDocument)browser.Document).getElementById("gid" + BrowserModel.GameId1)).click();
-			(((mshtml.HTMLDocument)browser.Document).getElementById("do")).click();
+			((mshtml.HTMLDocument)browser.Document).getElementById("userPassword").setAttribute("value", "Qazqwerty2");
+
+			((mshtml.HTMLDocument)browser.Document).getElementById("userConButton").click();
+		}
+
+		public void HideScriptErrors(WebBrowser wb, bool Hide)
+		{
+			FieldInfo fiComWebBrowser = typeof(WebBrowser).GetField("_axIWebBrowser2", BindingFlags.Instance | BindingFlags.NonPublic);
+			if (fiComWebBrowser == null) return;
+			object objComWebBrowser = fiComWebBrowser.GetValue(wb);
+			if (objComWebBrowser == null) return;
+			objComWebBrowser.GetType().InvokeMember("Silent", BindingFlags.SetProperty, null, objComWebBrowser, new object[] { Hide });
 		}
 	}
 }

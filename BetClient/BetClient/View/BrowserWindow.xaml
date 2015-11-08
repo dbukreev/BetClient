@@ -44,9 +44,11 @@
                     <GradientStop Color="White"/>
                 </LinearGradientBrush>
             </Grid.Background>
-            <ToolBar>
-                <Button Content="Настройки" Height="25" VerticalAlignment="Top" Width="95"/>
+            <ToolBar Height="40">
                 <Button Content="Калькулятор" Height="25" VerticalAlignment="Top" Width="75" Command="{Binding CalcCommand}"/>
+                <Label Content="Сумма:" Margin="40, 0, 0, 0" VerticalContentAlignment="Top" Padding="4"/>
+                <TextBox Margin="20, 0, 0, 10" Width="60" Height="10" Text="{Binding BrowserModel.Sum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label Content="RUB" Margin="5, 0, 0, 0"/>
             </ToolBar>
         </Grid>
         <Grid Name="BrowsersGrid" Grid.Row="1" >
@@ -62,7 +64,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid Name="Browser1Grid"   Grid.Row="0">
-                <WebBrowser Name="Browser1" add:WebBrowserUtility.BindableSource="{Binding BrowserModel.Site1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Margin="60,15,15, 34">
+                <WebBrowser Name="Browser1" add:WebBrowserUtility.BindableSource="{Binding BrowserModel.Site1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"   Margin="160,15,15, 34">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Navigated">
                             <i:InvokeCommandAction Command="{Binding Path=NavigationCommand1}" CommandParameter="{Binding ElementName=Browser1}"/>
@@ -88,15 +90,57 @@
                     </Button.Content>
                 </Button>
                 <TextBox  Width="500"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="180, 0, 0, 3" Text="{Binding BrowserModel.Text1, Mode=TwoWay}" IsReadOnly="True"/>
+                <Label Name="LabelType" FontWeight="Bold" FontSize="11" HorizontalAlignment="Left" Margin="2,10,0,0" VerticalAlignment="Top" Width="150">
+                    <TextBlock Text="{Binding BrowserModel.Fork.champ}" TextWrapping="Wrap"/>
+                </Label>
+                <Label Name="LabelGameName" FontWeight="Bold" FontSize="11" HorizontalAlignment="Left" Margin="2,35,0,0" VerticalAlignment="Top" Width="150">
+                    <TextBlock Text="{Binding BrowserModel.Fork.name_1}" TextWrapping="Wrap"/>
+                </Label>
+                <Label x:Name="LabelBet" Content="Ставка: " HorizontalAlignment="Left" FontSize="11" Margin="2,85,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="BetType"  FontSize="11" HorizontalAlignment="Left" Margin="42,85,0,0" VerticalAlignment="Top">
+                    <Label.Content>
+                        <TextBlock>
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0}_{1}">
+                                    <Binding Path="BrowserModel.Fork.type_g" />
+                                    <Binding Path="BrowserModel.Fork.type_1" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </Label.Content>
+                </Label>
+                <Label x:Name="LabelCoeff1" Content="Коэф.:" HorizontalAlignment="Left" FontSize="11" Margin="2,110,0,0" VerticalAlignment="Top"/>
+                <TextBox Name="TextBoxKoef1" HorizontalAlignment="Left" Height="15" Margin="54,110,0,0" TextWrapping="Wrap" Text="{Binding BrowserModel.Fork.k_1}" VerticalAlignment="Top" Width="65" IsReadOnly="True" TextAlignment="Right"/>
+                <Label x:Name="LabelSum" Content="Сумма:" HorizontalAlignment="Left" FontSize="11" Margin="2,135,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="TextBoxSum" HorizontalAlignment="Left" Height="15" Margin="54,135,0,0" TextWrapping="Wrap" Text="{Binding BrowserModel.Sum1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="65" TextAlignment="Right" IsReadOnly="True"/>
+                <Label x:Name="LabelWinGain" HorizontalAlignment="Left" FontSize="11" Margin="2,160,0,0" VerticalAlignment="Top" Content="{Binding BrowserModel.Gain1}" ContentStringFormat="{}Выигрыш: {0} RUB"/>
+                <Label x:Name="LabelGain" HorizontalAlignment="Left" FontSize="11" Margin="2,185,0,0" VerticalAlignment="Top">
+                    <Label.Content>
+                        <TextBlock>
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}Прибыль: {0} RUB">
+                                    <Binding Path="BrowserModel.WinGain1" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </Label.Content>
+                </Label>
+                <Label x:Name="LabelGainPercent" HorizontalAlignment="Left" FontSize="11" Margin="2,210,0,0" VerticalAlignment="Top">
+                    <Label.Content>
+                        <TextBlock>
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}Процент: {0}%">
+                                    <Binding Path="BrowserModel.WinPercent1" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </Label.Content>
+                </Label>
             </Grid>
             <Grid Name="GridSeparator" Grid.Row="1" Background="Gray">
             </Grid>
             <Grid Name="Browser2Grid" Grid.Row="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="361*"/>
-                    <ColumnDefinition Width="531*"/>
-                </Grid.ColumnDefinitions>
-                <WebBrowser  Name="Browser2" add:WebBrowserUtility.BindableSource="{Binding BrowserModel.Site2}"  Margin="60,15,15, 34" Grid.ColumnSpan="2">
+                <WebBrowser  Name="Browser2" add:WebBrowserUtility.BindableSource="{Binding BrowserModel.Site2}"  Margin="160,15,15, 34" Grid.ColumnSpan="2">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Navigated">
                             <i:InvokeCommandAction Command="{Binding Path=NavigationCommand2}" CommandParameter="{Binding ElementName=Browser2}"/>
@@ -122,6 +166,52 @@
                     </Button.Content>
                 </Button>
                 <TextBox  Width="500"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="180, 0, 0, 3" Text="{Binding BrowserModel.Text2, Mode=TwoWay}" IsReadOnly="True" Grid.ColumnSpan="2"/>
+                <Label Name="LabelType2" FontWeight="Bold" FontSize="11" HorizontalAlignment="Left" Margin="2,10,0,0" VerticalAlignment="Top" Width="150">
+                    <TextBlock Text="{Binding BrowserModel.Fork.champ}" TextWrapping="Wrap"/>
+                </Label>
+                <Label Name="LabelGameName2" FontWeight="Bold" FontSize="11" HorizontalAlignment="Left" Margin="2,35,0,0" VerticalAlignment="Top" Width="150">
+                    <TextBlock Text="{Binding BrowserModel.Fork.name_2}" TextWrapping="Wrap"/>
+                </Label>
+                <Label x:Name="LabelBet2" Content="Ставка: " HorizontalAlignment="Left" FontSize="11" Margin="2,85,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="BetType2"  FontSize="11" HorizontalAlignment="Left" Margin="42,85,0,0" VerticalAlignment="Top">
+                    <Label.Content>
+                        <TextBlock>
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0}_{1}">
+                                    <Binding Path="BrowserModel.Fork.type_g" />
+                                    <Binding Path="BrowserModel.Fork.type_2" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </Label.Content>
+                </Label>
+                <Label x:Name="LabelCoeff2" Content="Коэф.:" HorizontalAlignment="Left" FontSize="11" Margin="2,110,0,0" VerticalAlignment="Top"/>
+                <TextBox Name="TextBoxKoef2" HorizontalAlignment="Left" Height="15" Margin="54,110,0,0" TextWrapping="Wrap" Text="{Binding BrowserModel.Fork.k_2}" VerticalAlignment="Top" Width="65" IsReadOnly="True" TextAlignment="Right"/>
+                <Label x:Name="LabelSum2" Content="Сумма:" HorizontalAlignment="Left" FontSize="11" Margin="2,135,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="TextBoxSum2" HorizontalAlignment="Left" Height="15" Margin="54,135,0,0" TextWrapping="Wrap" Text="{Binding BrowserModel.Sum2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="65" TextAlignment="Right" IsReadOnly="True"/>
+                <Label x:Name="LabelWinGain2" HorizontalAlignment="Left" FontSize="11" Margin="2,160,0,0" VerticalAlignment="Top" Content="{Binding BrowserModel.Gain2}" ContentStringFormat="{}Выигрыш: {0} RUB"/>
+                <Label x:Name="LabelGain2" HorizontalAlignment="Left" FontSize="11" Margin="2,185,0,0" VerticalAlignment="Top">
+                    <Label.Content>
+                        <TextBlock>
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}Прибыль: {0} RUB">
+                                    <Binding Path="BrowserModel.WinGain2" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </Label.Content>
+                </Label>
+                <Label x:Name="LabelGainPercent2" HorizontalAlignment="Left" FontSize="11" Margin="2,210,0,0" VerticalAlignment="Top">
+                    <Label.Content>
+                        <TextBlock>
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}Процент: {0}%">
+                                    <Binding Path="BrowserModel.WinPercent2" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </Label.Content>
+                </Label>
             </Grid>
         </Grid>
     </Grid>
