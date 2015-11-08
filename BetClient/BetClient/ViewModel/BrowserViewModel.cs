@@ -132,7 +132,7 @@ namespace BetClient.ViewModel
 		{
 			BrowserModel.Text1 = browser.Source.AbsoluteUri;
 			//SetSilentClass.SetSilent(browser, true);
-			HideScriptErrors(browser, true);
+			//HideScriptErrors(browser, true);
 		}
 
 		public void OnLoaded1(WebBrowser browser)
@@ -171,7 +171,7 @@ namespace BetClient.ViewModel
 		public void OnNavigation2(WebBrowser browser)
 		{
 			BrowserModel.Text2 = browser.Source.AbsoluteUri;
-			HideScriptErrors(browser, true);
+			//HideScriptErrors(browser, true);
 			//SetSilentClass.SetSilent(browser, true);
 		}
 

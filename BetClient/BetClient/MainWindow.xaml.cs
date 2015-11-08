@@ -17,8 +17,9 @@ namespace BetClient
 			loginWindow.ShowDialog();
 			if (LoginModel.IsLogin == false)
 				Environment.Exit(0);
-			InitializeComponent();
+
 			SetBrowserEmulationMode();
+			InitializeComponent();
 		}
 
 		public void SetBrowserEmulationMode()
@@ -27,7 +28,7 @@ namespace BetClient
 
 			if (String.Compare(fileName, "devenv.exe", true) == 0 || String.Compare(fileName, "XDesProc.exe", true) == 0)
 				return;
-			UInt32 mode = 10000;
+			UInt32 mode = 11001;
 			SetBrowserFeatureControlKey("FEATURE_BROWSER_EMULATION", fileName, mode);
 		}
 
