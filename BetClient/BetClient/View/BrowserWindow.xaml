@@ -45,10 +45,14 @@
                 </LinearGradientBrush>
             </Grid.Background>
             <ToolBar Height="40">
-                <Button Content="Калькулятор" Height="25" VerticalAlignment="Top" Width="75" Command="{Binding CalcCommand}"/>
+               
+                <Button Content="Все" Height="25" VerticalAlignment="Top" Width="75" Command="{Binding AllCommand}"/>
+                <Button Content="{Binding BrowserModel.Fork.site_1}" Height="25" VerticalAlignment="Top" Width="75" Command="{Binding FirstCommand}"/>
+                <Button Content="{Binding BrowserModel.Fork.site_2}" Height="25" VerticalAlignment="Top" Width="75" Command="{Binding SecondCommand}"/>
                 <Label Content="Сумма:" Margin="40, 0, 0, 0" VerticalContentAlignment="Top" Padding="4"/>
                 <TextBox Margin="20, 0, 0, 10" Width="60" Height="10" Text="{Binding BrowserModel.Sum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <Label Content="RUB" Margin="5, 0, 0, 0"/>
+                <Button Content="Калькулятор" Height="25" VerticalAlignment="Top" Width="75" Command="{Binding CalcCommand}" Margin="200, 0 ,0, 0"/>
             </ToolBar>
         </Grid>
         <Grid Name="BrowsersGrid" Grid.Row="1" >
@@ -59,9 +63,9 @@
                 </LinearGradientBrush>
             </Grid.Background>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="4"/>
-                <RowDefinition Height="*"/>
+                <add:RowDefinitionExtended Height="*" MinHeight="20" Visible="{Binding FirstVisibility}"/>
+                <add:RowDefinitionExtended Height="4" MinHeight="4" Visible="{Binding SeparatorVisibility}"/>
+                <add:RowDefinitionExtended  Height="*" MinHeight="20" Visible="{Binding SecondVisibility}"/>
             </Grid.RowDefinitions>
             <Grid Name="Browser1Grid"   Grid.Row="0">
                 <WebBrowser Name="Browser1" add:WebBrowserUtility.BindableSource="{Binding BrowserModel.Site1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"   Margin="160,15,15, 34">
@@ -74,22 +78,22 @@
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </WebBrowser>
-                <Button  Name="ButtonBack1" Height="5" Width="25" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="90, 0, 0, 4" Command="{Binding BackCommand1}" CommandParameter="{Binding ElementName=Browser1}">
+                <Button  Name="ButtonBack1" Height="5" Width="25" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="160, 0, 0, 4" Command="{Binding BackCommand1}" CommandParameter="{Binding ElementName=Browser1}">
                     <Button.Content>
                         <Image Source="Image/back.png"></Image>
                     </Button.Content>
                 </Button>
-                <Button Name="ButtonForward1" Height="5" Width="25"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="120, 0, 0, 4" Command="{Binding ForwardCommand1}" CommandParameter="{Binding ElementName=Browser1}">
+                <Button Name="ButtonForward1" Height="5" Width="25"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="190, 0, 0, 4" Command="{Binding ForwardCommand1}" CommandParameter="{Binding ElementName=Browser1}">
                     <Button.Content>
                         <Image Source="Image/forward.png"></Image>
                     </Button.Content>
                 </Button>
-                <Button Name="ButtonUpdate1" Height="5" Width="25"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="150, 0, 0, 4" Command="{Binding RefreshCommand1}" CommandParameter="{Binding ElementName=Browser1}">
+                <Button Name="ButtonUpdate1" Height="5" Width="25"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="220, 0, 0, 4" Command="{Binding RefreshCommand1}" CommandParameter="{Binding ElementName=Browser1}">
                     <Button.Content>
                         <Image Source="Image/refresh.png"></Image>
                     </Button.Content>
                 </Button>
-                <TextBox  Width="500"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="180, 0, 0, 3" Text="{Binding BrowserModel.Text1, Mode=TwoWay}" IsReadOnly="True"/>
+                <TextBox  Width="500"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="250, 0, 0, 3" Text="{Binding BrowserModel.Text1, Mode=TwoWay}" IsReadOnly="True"/>
                 <Label Name="LabelType" FontWeight="Bold" FontSize="11" HorizontalAlignment="Left" Margin="2,10,0,0" VerticalAlignment="Top" Width="150">
                     <TextBlock Text="{Binding BrowserModel.Fork.champ}" TextWrapping="Wrap"/>
                 </Label>
@@ -137,8 +141,8 @@
                     </Label.Content>
                 </Label>
             </Grid>
-            <Grid Name="GridSeparator" Grid.Row="1" Background="Gray">
-            </Grid>
+            <GridSplitter Name="GridSeparator" Grid.Row="1" Background="Gray" HorizontalAlignment="Stretch">
+            </GridSplitter>
             <Grid Name="Browser2Grid" Grid.Row="2">
                 <WebBrowser  Name="Browser2" add:WebBrowserUtility.BindableSource="{Binding BrowserModel.Site2}"  Margin="160,15,15, 34" Grid.ColumnSpan="2">
                     <i:Interaction.Triggers>
@@ -150,22 +154,22 @@
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </WebBrowser>
-                <Button Name="ButtonBack2" Height="5" Width="25" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="90, 0, 0, 4" Command="{Binding BackCommand2}" CommandParameter="{Binding ElementName=Browser2}">
+                <Button Name="ButtonBack2" Height="5" Width="25" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="160, 0, 0, 4" Command="{Binding BackCommand2}" CommandParameter="{Binding ElementName=Browser2}">
                     <Button.Content>
                         <Image Source="Image/back.png"></Image>
                     </Button.Content>
                 </Button>
-                <Button Name="ButtonForward2" Height="5" Width="25"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="120, 0, 0, 4" Command="{Binding ForwardCommand2}" CommandParameter="{Binding ElementName=Browser2}">
+                <Button Name="ButtonForward2" Height="5" Width="25"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="190, 0, 0, 4" Command="{Binding ForwardCommand2}" CommandParameter="{Binding ElementName=Browser2}">
                     <Button.Content>
                         <Image Source="Image/forward.png"></Image>
                     </Button.Content>
                 </Button>
-                <Button  Name="ButtonUpdate2" Height="5" Width="25"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="150, 0, 0, 4" Command="{Binding RefreshCommand2}" CommandParameter="{Binding ElementName=Browser2}">
+                <Button  Name="ButtonUpdate2" Height="5" Width="25"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="220, 0, 0, 4" Command="{Binding RefreshCommand2}" CommandParameter="{Binding ElementName=Browser2}">
                     <Button.Content>
                         <Image Source="Image/refresh.png"></Image>
                     </Button.Content>
                 </Button>
-                <TextBox  Width="500"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="180, 0, 0, 3" Text="{Binding BrowserModel.Text2, Mode=TwoWay}" IsReadOnly="True" Grid.ColumnSpan="2"/>
+                <TextBox  Width="500"  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="250, 0, 0, 3" Text="{Binding BrowserModel.Text2, Mode=TwoWay}" IsReadOnly="True" Grid.ColumnSpan="2"/>
                 <Label Name="LabelType2" FontWeight="Bold" FontSize="11" HorizontalAlignment="Left" Margin="2,10,0,0" VerticalAlignment="Top" Width="150">
                     <TextBlock Text="{Binding BrowserModel.Fork.champ}" TextWrapping="Wrap"/>
                 </Label>

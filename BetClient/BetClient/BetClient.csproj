@@ -111,6 +111,7 @@
     </ApplicationDefinition>
     <Compile Include="Add\GainConverter.cs" />
     <Compile Include="Add\CoeffConverter.cs" />
+    <Compile Include="Add\RowDefinitionExtended.cs" />
     <Compile Include="Add\SetSilent.cs" />
     <Compile Include="Add\TimeConverter.cs" />
     <Compile Include="Add\TypeConverter.cs" />

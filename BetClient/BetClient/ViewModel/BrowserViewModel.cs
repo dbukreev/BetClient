@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Reflection;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using BetClient.Add;
@@ -30,6 +31,53 @@ namespace BetClient.ViewModel
 			LoadedCommand2 = new RelayCommand<WebBrowser>(OnLoaded2);
 
 			CalcCommand = new RelayCommand(OnCalcCommand);
+			AllCommand = new RelayCommand( OnAllVisibility);
+			FirstCommand = new RelayCommand(OnFirstVisibility);
+			SecondCommand = new RelayCommand(OnSecondVisibility);
+			OnAllVisibility();
+		}
+
+		private bool _separetorVisibility;
+		private bool _firstVisibility;
+		private bool _secondVisibility;
+
+		public bool SeparetorVisibility
+		{
+			get
+			{
+				return _separetorVisibility;
+			}
+			set
+			{
+				_separetorVisibility = value;
+				RaisePropertyChanged();
+			}
+		}
+
+		public bool FirstVisibility
+		{
+			get
+			{
+				return _firstVisibility;
+			}
+			set
+			{
+				_firstVisibility = value;
+				RaisePropertyChanged();
+			}
+		}
+
+		public bool SecondVisibility
+		{
+			get
+			{
+				return _secondVisibility;
+			}
+			set
+			{
+				_secondVisibility = value;
+				RaisePropertyChanged();
+			}
 		}
 
 		public RelayCommand<WebBrowser> BackCommand1 { get; set; }
@@ -53,6 +101,12 @@ namespace BetClient.ViewModel
 		public RelayCommand<WebBrowser> LoadedCommand2 { get; set; }
 
 		public ICommand CalcCommand { get; set; }
+
+		public ICommand AllCommand { get; set; }
+
+		public ICommand FirstCommand { get; set; }
+
+		public ICommand SecondCommand { get; set; }
 
 		public BrowserModel BrowserModel { get; set; }
 
@@ -287,6 +341,27 @@ namespace BetClient.ViewModel
 			object objComWebBrowser = fiComWebBrowser.GetValue(wb);
 			if (objComWebBrowser == null) return;
 			objComWebBrowser.GetType().InvokeMember("Silent", BindingFlags.SetProperty, null, objComWebBrowser, new object[] { Hide });
+		}
+
+		public void OnAllVisibility()
+		{
+			FirstVisibility = true;
+			SecondVisibility = true;
+			SeparetorVisibility = true;
+		}
+
+		public void OnFirstVisibility()
+		{
+			FirstVisibility = true;
+			SecondVisibility = false;
+			SeparetorVisibility = false;
+		}
+
+		public void OnSecondVisibility()
+		{
+			FirstVisibility = false;
+			SecondVisibility = true;
+			SeparetorVisibility = false;
 		}
 	}
 }
