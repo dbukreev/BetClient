@@ -1,4 +1,4 @@
-﻿using BetClient.Properties;
+﻿using BetInLive.Properties;
 using GalaSoft.MvvmLight.Messaging;
 
 namespace BetClient.View

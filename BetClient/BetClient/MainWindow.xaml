@@ -4,7 +4,7 @@
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
                       xmlns:add="clr-namespace:BetClient.Add"
                       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-                      Title="BetInLive v0.0.0.5 fix_xbet_bug"
+                      Title="BetInLive"
                       Height="600"
                       Width="1100"
                       MinHeight="600"

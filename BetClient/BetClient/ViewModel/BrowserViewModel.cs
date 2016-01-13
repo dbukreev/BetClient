@@ -5,7 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using BetClient.Add;
 using BetClient.Model;
-using BetClient.Properties;
+using BetInLive.Properties;
 using BetClient.View;
 using EFData;
 using GalaSoft.MvvmLight;

@@ -3,7 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using BetClient.Add;
 using BetClient.Model;
-using BetClient.Properties;
+using BetInLive.Properties;
 using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Messaging;
 
